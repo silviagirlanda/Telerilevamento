@@ -26,3 +26,4 @@ plot(flowers,bees,pch=19,cex=.5) #qui si dimezzerranno
 #posso cambiare il colore, ricordandosi di metterlo tra virgolette ""
 plot(flowers,bees,pch=19,cex=.5,col="cyan3")
 #per salvare vai su "Commit changes..."
+#per modificare nuovamente lo script, clicca sulla matita, apporta le modifiche e clicca nuovamente su "Commit changes..."
