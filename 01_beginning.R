@@ -1,29 +1,32 @@
 # First script R
 
-#R a calculator
+#R come calcolatore
 a<-5*2
 b<-4*7
 
 a+b
+a*b
+a-b
+a/b
 
-#arrays
+#Posso creare arrays con simbolo di assegnazione
 
 flowers<-c(3,6,8,10,15,18)
 flowers
 
 bees<-c(10,16,25,42,61,73)
 bees
-#posso mettere in relazione flowers con bees, ad es. facendo un grafico (sulla x avrò flowers, sulla y avrò bees)
+#Posso mettere in relazione flowers con bees, ad es. facendo un grafico (primo elemento corrisponde a x, secondo a y)
 plot(flowers,bees)
 
-#possiamo cambiare il simbolo 
+#Possiamo cambiare la forma del simbolo 
 plot(flowers,bees,pch=19)
 
-#posso cambiare la dimensione
-plot(flowers,bees,pch=19,cex=2) # in questo caso raddoppio
-plot(flowers,bees,pch=19,cex=.5) #qui si dimezzerranno
+#Posso cambiare la dimensione del simbolo
+plot(flowers,bees,pch=19,cex=2) # in questo caso raddoppio la dimensione
+plot(flowers,bees,pch=19,cex=.5) #qui si dimezza la dimensione
 
-#posso cambiare il colore, ricordandosi di metterlo tra virgolette ""
+#Posso cambiare il colore, ricordandosi di metterlo tra virgolette ""
 plot(flowers,bees,pch=19,cex=.5,col="cyan3")
-#per salvare vai su "Commit changes..."
-#per modificare nuovamente lo script, clicca sulla matita, apporta le modifiche e clicca nuovamente su "Commit changes..."
+
+#Per salvare vai su "Commit changes..."
