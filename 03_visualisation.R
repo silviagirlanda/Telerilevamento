@@ -95,3 +95,30 @@ im.plotRGB(stacksent,4,2,1)
 par(mfrow=c(1,2))
 im.plotRGB(stacksent,3,2,1)
 im.plotRGB(stacksent,4,2,1)
+
+#In realtà nel telerilevamento, si fa skippare tutto.
+im.plotRGB(stacksent,4,3,2) #il risultato sarà uguale a quello nella riga 92, perchè comanda la banda meno correlata con le altre, qui l'infrarosso
+#4:infrarosso; 3:rosso; 2:verde
+
+#Verfichiamo con un par.
+par(mfrow=c(1,3))
+im.plotRGB(stacksent,3,2,1) #colori naturali
+im.plotRGB(stacksent,4,2,1) #infrarosso mantenendo le altre due barre
+im.plotRGB(stacksent,4,3,2) #infrarosso ma cambiando le altre bande
+
+#Proviamo altre combinazioni.
+im.plotRGB(stacksent,3,4,2) #infrarosso nel verde. Solitamente qui il suolo nudo diventa rosa.
+im.plotRGB(stacksent,3,2,4) #infrarosso sul blu: per evidenziare suolo nudo che diventa giallo (colore che colpisce di più l'occhio umano)
+
+#Esercizio: metti le quattro immagini insieme.
+par(mfrow=c(1,4))
+im.plotRGB(stacksent,3,2,1) #colori naturali
+im.plotRGB(stacksent,4,2,1) #nir su rosso
+im.plotRGB(stacksent,3,4,2) #nir su verde
+im.plotRGB(stacksent,3,2,4) #nir su blu
+
+#Nuova funzione: grande matrice con diversi grafici all'interno, tra cui indice di Pearson etc. 
+pairs(stacksent)
+
+#Per avere info su una certa immagine, come il numero dei pixel, etc. Scrivi nome dell'immagine.
+b2
