@@ -86,3 +86,18 @@ plot(dvi2006,col=cl)
 par(mfrow=c(1,2))
 plot(dvi1992,col=cl)
 plot(dvi2006,col=cl)
+#range è in funzione della radaizione radiometrica
+
+#NDVI (Normalized Difference Vegetation Index)
+ndvi1992 = dvi1992 / (m1992[[1]] + m1992[[2]])
+ndvi2006 = dvi2006 / (m2006[[1]] + m2006[[2]])
+
+#Plottiamo:
+par(mfrow=c(1,2))
+plot(ndvi1992,col=cl)
+plot(ndvi2006,col=cl)
+#il range NON è in funzione della radiazione radiometrica ma va da -1 a 1
+
+#Nel pacchetto imageRy è presente una funzione speciale:
+im.dvi #CONTROLLA
+im.ndvi #CONTROLLA
