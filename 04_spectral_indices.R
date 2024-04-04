@@ -13,8 +13,8 @@ im.import("matogrosso_l5_1992219_lrg.jpg") #il nome del file è così perchè ha
 #Nominiamolo:
 m1992<-im.import("matogrosso_l5_1992219_lrg.jpg")
 
-#bande
-#banda 1 = NIR
+#Bande
+#banda 1 = infrarosso = NIR
 #banda 2 = rosso = R
 #banda 3 = verde = G
 
@@ -56,3 +56,33 @@ im.plotRGB(m2006, 1, 2, 3) #2006 nir on red
 im.plotRGB(m2006, 2, 1, 3) #2006 nir on green
 im.plotRGB(m2006, 2, 3, 1) #2006 nir on blue
 
+
+#---------------------------------------------------4 aprile 2024
+#Calcolo indice di vegetazione (DVI)
+#Prendo ogni singolo pixel della banda e faccio la sottrazione tra NIR e R per ottenere DVI
+
+dvi1992 = m1992[[1]] - m1992[[2]] #dichiaro quale elemento voglio utilizzare, ossia il primo e secondo elemento di un'imm satellitare
+#c'è = perchè effettivamente è un'operazione matematica
+# dvi1992 = m1992$matogrosso~2219_lrg_1 - m1992$matogrosso~2219_lrg_2 :lego con il simbolo del $ la prima e seconda banda, troppo macchinoso
+
+#Se invio il singolo elemento leggo tutte le informazioni ad esso annesse. 
+dvi1992
+
+#Plottiamo il DVI1992:
+cl <-colorRampPalette(c("darkblue","yellow","red","black"))(100) #simile ai colori della rainbowcolor, ma qui ci sta bene
+plot(dvi1992,col=cl)
+
+#Ripetiamo lo stesso per il DVI del 2006
+#Importala e rinominala
+m2006<- im.import("matogrosso_ast_2006209_lrg.jpg")
+#Calcoliamo DVI2006:
+dvi2006 = m2006[[1]] - m2006[[2]]
+
+#Plottiamo il DVI2006:
+cl <-colorRampPalette(c("darkblue","yellow","red","black"))(100) #giallo usato perchè è uno dei colori che colpisce maggiormente la retina
+plot(dvi2006,col=cl)
+
+#Esercizio: Plottiamo dvi1992 a lato di dvi2006
+par(mfrow=c(1,2))
+plot(dvi1992,col=cl)
+plot(dvi2006,col=cl)
