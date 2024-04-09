@@ -61,8 +61,12 @@ im.plotRGB(m2006, 2, 3, 1) #2006 nir on blue
 #Calcolo indice di vegetazione (DVI)
 #Prendo ogni singolo pixel della banda e faccio la sottrazione tra NIR e R per ottenere DVI
 
+#DVI1992
+
 dvi1992 = m1992[[1]] - m1992[[2]] #dichiaro quale elemento voglio utilizzare, ossia il primo e secondo elemento di un'imm satellitare
-#c'è = perchè effettivamente è un'operazione matematica
+#c'è = perchè si tratta di un'operazione matematica
+
+# Funzione alternativa:
 # dvi1992 = m1992$matogrosso~2219_lrg_1 - m1992$matogrosso~2219_lrg_2 :lego con il simbolo del $ la prima e seconda banda, troppo macchinoso
 
 #Se invio il singolo elemento leggo tutte le informazioni ad esso annesse. 
@@ -71,6 +75,8 @@ dvi1992
 #Plottiamo il DVI1992:
 cl <-colorRampPalette(c("darkblue","yellow","red","black"))(100) #simile ai colori della rainbowcolor, ma qui ci sta bene
 plot(dvi1992,col=cl)
+
+#DVI2006
 
 #Ripetiamo lo stesso per il DVI del 2006
 #Importala e rinominala
@@ -86,7 +92,7 @@ plot(dvi2006,col=cl)
 par(mfrow=c(1,2))
 plot(dvi1992,col=cl)
 plot(dvi2006,col=cl)
-#range è in funzione della radaizione radiometrica
+#range è in funzione della radiazione radiometrica
 
 #NDVI (Normalized Difference Vegetation Index)
 ndvi1992 = dvi1992 / (m1992[[1]] + m1992[[2]])
