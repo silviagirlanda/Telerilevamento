@@ -1,4 +1,5 @@
-#Secondo metodo di classficare i cambiamenti nel tempo
+#--------------------11 APRILE 2024
+#Secondo metodo di classficare i cambiamenti nel tempo (SCRIVITI APPUNTI DI ANIS DA IMMMAGINE) 
 
 #Riprendiamo i precedenti pacchetti:
 library(terra)
