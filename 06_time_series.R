@@ -58,4 +58,8 @@ plot(greenland,col=clg)
 difg = greenland[[1]] - greenland [[4]]
 
 #Plottiamo:
-plot(difg, colo=cl)
+cl1 <- colorRampPalette(c("red","white","blue")) (100) #valori rossi dove T è aumentata
+plot(difg,col=cl1) 
+
+#Prendiamo 3 livelli di un RGB e per ogni livello metto un livello dello stack prima creato: in base al colore ottenuto, capirò in quale anno ho avuto i valori di T più elevati:
+im.plotRGB(greenland, r=1, g=2, b=4) #g2000 sul rosso, g2005 sul verde, g2015 sul blu
