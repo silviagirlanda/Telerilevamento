@@ -27,9 +27,35 @@ plot(difEN, col=cl)
 ###Scioglimento dei ghiacciai in Groenlandia
 
 #Importiamo Groenlandia del 2000:
-g2000<-im.import("greenland.2000.tif")
+g2000 <- im.import("greenland.2000.tif")
 
 #Plottiamola, scegliendo una palette:
 clg<-colorRampPalette(c("black","blue","white","red")) (100) #nero sono T più basse, rosso T più alte
 plot(g2000,col=clg) #la parte nera, ossia più fredda, è quella più interna
 
+#Importiamo anche le altre immagini degli anni successivi:
+g2005 <- im.import("greenland.2005.tif")
+g2010 <- im.import("greenland.2010.tif")
+g2015 <- im.import("greenland.2015.tif")
+
+#Creiamo un multiframe con 2 immagini, in 1 riga e 2 colonna:
+par(mfrow=c(1,2))
+plot(g2000, col=clg)
+plot(g2015, col=clg)
+
+#Creiamo un multiframe con tutte le 4 immagini, in 2 righe e 2 colonne:
+par(mfrow=c(2,2))
+plot(g2000, col=clg)
+plot(g2005, col=clg)
+plot(g2010, col=clg)
+plot(g2015, col=clg)
+
+#Per facilitare il tutto, posso fare uno stack e assegnarlo all'oggetto "greenland":
+greenland <-c(g2000, g2005, g2010, g2015)
+plot(greenland,col=clg)
+
+#Faccio la differenza tra primo e quarto livello:
+difg = greenland[[1]] - greenland [[4]]
+
+#Plottiamo:
+plot(difg, colo=cl)
