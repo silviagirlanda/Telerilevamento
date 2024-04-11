@@ -1,5 +1,5 @@
 #--------------------11 APRILE 2024
-#Secondo metodo di classficare i cambiamenti nel tempo
+###Secondo metodo di classficare i cambiamenti nel tempo
 
 #Riprendiamo i precedenti pacchetti:
 library(terra)
@@ -23,3 +23,13 @@ cl <- colorRampPalette(c("blue","white","red")) (100) #scelgo la banda di colori
 
 #Plottiamo:
 plot(difEN, col=cl)
+
+###Scioglimento dei ghiacciai in Groenlandia
+
+#Importiamo Groenlandia del 2000:
+g2000<-im.import("greenland.2000.tif")
+
+#Plottiamola, scegliendo una palette:
+clg<-colorRampPalette(c("black","blue","white","red")) (100) #nero sono T più basse, rosso T più alte
+plot(g2000,col=clg) #la parte nera, ossia più fredda, è quella più interna
+
