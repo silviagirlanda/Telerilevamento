@@ -11,3 +11,11 @@ setwd("/Users/silviagirlanda/Downloads") #set working directory
 
 #Questa funzione serve a crerae degli oggetti raster spaziali:
 eclissi<-rast("eclissi.png") #lo assegno all'oggetto eclissi
+
+#Vediamo tutte le informazioni annesse all'immagine:
+eclissi
+
+#Ora plottiamo l'immagine con la solita funzione nota in imageRy:
+im.plotRGB(eclissi,1,2,3) #la visualizziamo normalmente. È possibile invertire le bande. 
+
+
