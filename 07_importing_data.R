@@ -18,4 +18,12 @@ eclissi
 #Ora plottiamo l'immagine con la solita funzione nota in imageRy:
 im.plotRGB(eclissi,1,2,3) #la visualizziamo normalmente. È possibile invertire le bande. 
 
+#Facciamo la differenza tra due bande, come già fatto con gli indici spettrali:
+dif = eclissi [[1]] - eclissi [[2]]
 
+#Importiamo un'altra immagine, cercata sul sito di EarthObservatory:
+forest<-rast("global_lcc_goodes.png")
+#https://earthobservatory.nasa.gov/features/ForestCarbon
+
+#Plottimola:
+im.plotRGB(forest,1,2,3)
