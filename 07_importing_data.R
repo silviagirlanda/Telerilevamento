@@ -28,3 +28,21 @@ forest<-rast("global_lcc_goodes.png")
 #Plottimola:
 im.plotRGB(forest,1,2,3)
 
+#Importiamo i dati da Copernicus:
+soil<-rast("c_gls_SSM1km_202404210000_CEURO_S1CSAR_V1.2.1.nc")
+
+#Plottiamo:
+plot(soil)
+
+#Per plottare solo il primo livello:
+plot(soil[[1]])
+
+#Per ritagliare i dati:
+ext <-c(25,30,55,58) # i primi 2 valori di coordinate defiscono x minima e x massima, i secondi due la y minima e la y massima
+soilcrop <- crop (soil,ext)
+
+#Plottiamo il nuovo ritaglio:
+plot(soilcrop)
+
+
+
