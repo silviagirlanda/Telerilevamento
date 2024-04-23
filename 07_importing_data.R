@@ -27,3 +27,4 @@ forest<-rast("global_lcc_goodes.png")
 
 #Plottimola:
 im.plotRGB(forest,1,2,3)
+
