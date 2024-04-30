@@ -24,7 +24,7 @@ im.plotRGB(sent, r=2, g=1, b=3)
 # nir = banda 2
 # verde = banda 3
 
-#Proviamo a valutare la VARIABILITÀ, con il metodo "Moving Window", usando una finestra esterna di calcolo della dev standard di cui sceglieremo la dimensione in pixel.
+#Proviamo a valutare la VARIABILITÀ, con il metodo "Moving Window", usando una finestra esterna di calcolo della dev standard di cui sceglieremo la dimensione in pixel, solitamente 3 x 3 pixel.
 #La dev standard lavora su un'unica variabile, quindi dobbiamo scegliere un'unica banda, quella dell'infrarosso.
 
 #Associamo la prima banda dell'immagine satellitare all'oggetto "nir"
@@ -38,5 +38,22 @@ cl <- colorRampPalette(c("red","orange","yellow"))(100) #3 colori in 100 sfumatu
 
 #Plottiamo con i nuovi colori:
 plot(nir, col=cl)
+
+#Useremo la nuova funzione "focal" che permette di estarre valori focali, ossia statistiche, in un gruppo di valori: qui la dev standard.
+focal(nir, matrix (1/9, 3, 3), fun=sd)
+# nir è l'immagine usata
+# matrix: 1/9 perchè useremo un unico pixel su 9, la matrice è di 3 x 3.
+# funzione usata è "standard deviation" N.B. non nominare con sd perchè corrisponde al nome della funzione
+
+#Rinominiamo l'oggetto:
+sd3 <- focal(nir, matrix (1/9, 3, 3), fun=sd)
+
+#Plottiamola:
+plot(sd3)
+
+
+
+      
+
 
 
