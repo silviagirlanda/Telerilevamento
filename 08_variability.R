@@ -42,7 +42,7 @@ plot(nir, col=cl)
 #Useremo la nuova funzione "focal" che permette di estarre valori focali, ossia statistiche, in un gruppo di valori: qui la dev standard.
 focal(nir, matrix (1/9, 3, 3), fun=sd)
 # nir è l'immagine usata
-# matrix: 1/9 perchè useremo un unico pixel su 9, la matrice è di 3 x 3.
+# matrix: 1/9 perchè useremo un unico pixel su 9, la matrice è di 3 x 3 pixel.
 # funzione usata è "standard deviation" N.B. non nominare con sd perchè corrisponde al nome della funzione
 
 #Rinominiamo l'oggetto:
@@ -56,18 +56,16 @@ install.packages("viridis")
 #Riprendiamolo:
 #library(viridis)
 
-#Usiamo nuovamente colorRampPalette ma usando "viridis", un pacchetto di colori che già esiste:
+#Usiamo nuovamente colorRampPalette ma usando "viridis", un pacchetto di colori che già esiste, e rinominiamolo:
 viridisc <- colorRampPalette(viridis(7))(100)
 #il 7 indica che è la settima palette in un pacchetto di palette
 
 #Plottiamolo:
 plot(sd3, col=viridisc)
+#alta variabilità a livello morfologico nelle zone di passaggio tra neve e non neve
 
+#Calcola la sd di una moving window di 7 x 7 pixel:
+sd7 <- focal(nir, matrix (1/49, 7, 7), fun=sd)
 
-
-
-
-      
-
-
-
+#Plottiamolo:
+plot(sd7,col=viridisc)
