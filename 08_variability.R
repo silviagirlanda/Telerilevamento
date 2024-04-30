@@ -53,6 +53,9 @@ plot(sd3)
 
 #Modifichiamo i colori usando "viridis", un pacchetto di colori adatto anche a coloro che hanno problemi di daltonismo.Installiamolo. 
 install.packages("viridis")
+#Riprendiamolo:
+#library(viridis)
+
 
 
 
