@@ -4,8 +4,8 @@
 library(imageRy) #da qui estrarremo il dato da utilizzare
 library(terra)
 
-library(viridis)
-#pacchetto viridis consente la visibilità a tutti, compresi i daltonici
+#install.packages("viridis") -> vedi più giù
+library(viridis) # "viridis" consente la visibilità a tutti, compresi i daltonici
 
 #Visualizziamo le liste dei dati:
 im.list()
@@ -50,6 +50,10 @@ sd3 <- focal(nir, matrix (1/9, 3, 3), fun=sd)
 
 #Plottiamola:
 plot(sd3)
+
+#Modifichiamo i colori usando "viridis", un pacchetto di colori adatto anche a coloro che hanno problemi di daltonismo.Installiamolo. 
+install.packages("viridis")
+
 
 
 
