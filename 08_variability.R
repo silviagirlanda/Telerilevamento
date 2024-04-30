@@ -42,7 +42,7 @@ plot(nir, col=cl)
 #Useremo la nuova funzione "focal" che permette di estarre valori focali, ossia statistiche, in un gruppo di valori: qui la dev standard.
 focal(nir, matrix (1/9, 3, 3), fun=sd)
 # nir è l'immagine usata
-# matrix: 1/9 perchè useremo un unico pixel su 9, la matrice è di 3 x 3 pixel.
+# matrix: 1/9 perchè useremo un unico pixel su 9, la matrice è di 3 x 3 pixel. È l'unità di misura. 
 # funzione usata è "standard deviation" N.B. non nominare con sd perchè corrisponde al nome della funzione
 
 #Rinominiamo l'oggetto:
@@ -69,3 +69,13 @@ sd7 <- focal(nir, matrix (1/49, 7, 7), fun=sd)
 
 #Plottiamolo:
 plot(sd7,col=viridisc)
+#essendoci più pixel nel calcolo, la ds risulta più alta in zone più ampie. Il valore massimo è inferiore a quello di prima perchè abbiamo più pixel simili, quindi minor sqm.
+
+#Calcola la sd di una moving window di 13 x 13 pixel:
+sd13 <- focal(nir, matrix (1/169, 13, 13), fun=sd)
+
+#Facciamo uno stack delle 3 immagini delle sd:
+sdstack <- c(sd3, sd7, sd13)
+
+#Plottiamo:
+plot(sdstack, col=viridisc)
