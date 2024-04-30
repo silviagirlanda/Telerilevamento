@@ -56,6 +56,13 @@ install.packages("viridis")
 #Riprendiamolo:
 #library(viridis)
 
+#Usiamo nuovamente colorRampPalette ma usando "viridis", un pacchetto di colori che già esiste:
+viridisc <- colorRampPalette(viridis(7))(100)
+#il 7 indica che è la settima palette in un pacchetto di palette
+
+#Plottiamolo:
+plot(sd3, col=viridisc)
+
 
 
 
