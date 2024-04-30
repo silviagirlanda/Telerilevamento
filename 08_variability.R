@@ -79,3 +79,8 @@ sdstack <- c(sd3, sd7, sd13)
 
 #Plottiamo:
 plot(sdstack, col=viridisc)
+
+####-----
+#Introduzione a prossima lezione. 
+#Per vedere la correlazione:
+pairs(sent)
