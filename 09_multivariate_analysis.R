@@ -29,7 +29,7 @@ im.plotRGB(sentdo, r=3, g=4, b=2)
 #Osserviamo quanto sono collegate tra di loro con la funzione "pairs", basato sulla matrice di Pearson:
 pairs(sentdo)
 
-#PCA
+#PCA: portare un sistema da n bande ad una banda sola:
 pcimage <- im.pca(sentdo)
 
 #per avere totale della dev standard di tutto il sistema fai la somma dei range di ogni asse
@@ -39,15 +39,22 @@ tot <-sum(1548.32458, 423.42968,  52.10700,   32.75954)
 1548.32458 * 100/tot #75%
 
 #Per avere la percentuale della variabilità spiegata dalla seconda componenete:
-423.42968 *100/tot #circa 20%
+423.42968 * 100/tot #circa 20%
 
 #Per avere la percentuale della variabilità spiegata dalla terza componenete:
-52.10700 *100/tot #2.5%
+52.10700 * 100/tot # 2.5%
 
 #Per avere la percentuale della variabilità spiegata dalla quarta componenete:
-32.75954 *100/tot #1.6%
+32.75954 * 100/tot #circa 1.5%
 
 #Plottiamo usando viridis:
 vir <- colorRampPalette(viridis(7))(100)
 
 plot(pcimage, col=vir)
+#il 70% dell'informaizone è contenuto all'interno della prima componente; nella seconda ho il 20%; nella terza immagine in pratica non ha nessuna informazione all'interno, guarda quanto sono brutti i colori
+
+#Oppure per evitare la colorRampPalette
+plot(pcimage, col=viridis(100))
+
+#Con un'altra palette di colori:
+plot(pcimage, col=plasma(100))
