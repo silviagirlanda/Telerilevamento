@@ -19,6 +19,13 @@ b8 <- im.import("sentinel.dolomites.b8.tif") #nir
 sentdo<-c(b2, b3, b4, b8)
 
 #Creiamo un plot:
-im.plotRGB(sentdo, r=4, g=3, b=2) 
+im.plotRGB(sentdo, r=4, g=3, b=2)
 #banda 4 montata su rosso, banda 3 su verde, banda 2 su blu
+
+#Oppure:
+im.plotRGB(sentdo, r=3, g=4, b=2)
+#banda 3 montata su rosso, banda 4 su verde, banda 2 su blu
+
+#Osserviamo quanto sono collegate tra di loro con la funzione "pairs", basato sulla matrice di Pearson:
+pairs(sentdo)
 
