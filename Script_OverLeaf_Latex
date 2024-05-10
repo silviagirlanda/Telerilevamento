@@ -1,0 +1,140 @@
+\documentclass[12pt]{article} %Spiega che tipo di documento realizziamo
+\usepackage{graphicx} % Pacchetto per inserire le immagini
+\usepackage{hyperref} %Pacchetto per creare un collegamento ipertestuale
+\usepackage{natbib} %Pacchetto per inserire la bibliografia
+\usepackage{lineno} %Pacchetto per inserire i numeri delle righe. Line numbers
+\linenumbers
+
+%Per ulteriori cose di impaginazione cerca sul web :)
+
+\title{Il mio primo documento LaTeX} %Titolo del documento
+\author{Silvia Girlanda}
+\date{7 Maggio 2024} % Data del nostro documento, per rimuoverla o tolgo il contenuto tra parentesi o la mantengo come commmento
+
+\begin{document}
+
+\maketitle %Prende tutti i pezzi scritti sopra e li mette all'inizio del documento
+
+%Per fare l'abstract:
+\begin{abstract}
+    Se partirò a Budapest, ti ricorderai
+Dei giorni in tenda, quella moonlight
+Fumando fino all'alba, non cambierai
+E non cambierò, fottendomi la testa in un night
+Soffrire può sembrare un po' fake
+Se curi le tue lacrime ad un rave
+Maglia bianca, oro sui denti, blue jeans
+Non paragonarmi a una bitch così
+Non era abbastanza, noi soli sulla Jeep
+Ma non sono bravo a rincorrere
+\end{abstract}
+
+\bigskip
+
+\textit{Keywords}: Tuta Gold, Budapest, Musica %Per mettere le parole chiave.
+
+\tableofcontents %Funzione per inserire il sommario
+
+\section{Introduction}\label{sec:intro}
+\textbf{LA TATUATA BELLA} %Per mettere il testo in grassetto
+\textit{Tre Allegri ragazzi morti}  %Per mettere il testo in corsivo
+La tatuata bella al lavoro non ci va
+Ha messo la camicia ma al lavoro non ci va
+Quello che vuole è altro, altro da questa vita
+A consumar le dita per gli altri non ci sta
+Padrone mostra il muso, vediamo come sei
+Padrone mostra il muso, che lingua parlerai?
+Da dove arriverai a cercar profitto?
+Sta' certo che il mio tempo stavolta non l'avrai
+E se lavori duro un motivo ci sarà
+E se lavori duro un motivo ci sarà
+Che schiavo del lavoro
+Che schiavo del lavoro
+O solo del pensiero che senza non si può
+Ti dico che non vengo, a lavorar non vengo
+Starò con la mia bella sul prato a far l'amor
+\bigskip %Per creare uno spazio grande tra righe OPPURE doppio backslash \\
+
+
+La tatuata bella al lavoro non ci va
+\smallskip %Per creare uno spazio piccolo tra righe
+Ha messo la camicia ma al lavoro non ci va
+Quello che vuole è altro, altro da questa vita
+A consumar le dita per gli altri non ci sta
+Padrone mostra il muso, vediamo come sei
+Padrone mostra il muso, che lingua parlerai?
+Da dove arriverai a cercar profitto?
+Sta' certo che il mio tempo stavolta non l'avrai
+E se lavori duro un motivo ci sarà
+E se lavori duro un motivo ci sarà
+Che schiavo del lavoro
+Che schiavo del lavoro
+O solo del pensiero che senza non si può
+Ti dico che non vengo, a lavorar non vengo
+Starò con la mia bella sul prato a far l'amor 
+\cite{Prudencio2015} %Per citare la bibliografia 
+\citep{Prudencio2015} %citazione tutta tra parentesi
+\citet{Prudencio2015} %citazione con testo
+
+Starò con la mia bella sul prato a far l'amor \footnote{Source: Canzone TARM} %Per inserire una nota a piè pagina
+
+Il video della canzone lo trovi su:
+\url{https://www.youtube.com/watch?v=0s8LLZtHgyA} %link alla pagina web di riferimento
+
+\section{Methods}
+\subsection{Study Area}
+\subsection{Algoritms}
+
+%Per scrivere un'EQUAZIONE: 
+Prima abbiamo usato la seguente equazione \ref{eq:sum}:
+\begin{equation} % Inizio dell'equazione
+    T = \sum p_i
+\label{eq:sum} %Attribuiamo un'etichetta alla eq. per fare riferimenti
+\end{equation} % Fine dell'equazione
+
+In questa tesi abbiamo usato un'equazione \ref{eq:newton}:
+\begin{equation}
+    F = \sqrt{G \frac{m_1\times m_2}{d^2}} %\sqrt per mettere sotto radice
+\label{eq:newton}
+\end{equation}
+
+\section{Results}
+\section{Discussion}
+I risultati ottenuti, come abbiamo visto nella sezione \ref{sec:intro}
+
+In questa tesi abbiamo osservato:
+\begin{itemize} %Per fare un elenco puntato:
+    \item Lavoro non ci va
+    \item Tatuata bella
+    \item Altro
+\end{itemize}
+
+\begin{enumerate} %Per fare un elenco numerato:
+    \item Lavoro non ci va
+    \item Tatuata bella
+    \item Altro
+\end{enumerate}
+
+\newpage %Per aggiungere un'immagine nuova.
+
+%Aggiungiamo un'immagine:
+\begin{figure}
+    \centering %per centrare la figura nel foglio
+    \includegraphics[width=\textwidth]{cha.png} %così l'immagine viene larga quanto il testo. Se volessimo farlo la metà, basterebbe scrivere width=0.5
+    \caption{Dipinto di Marc Chagall} %didascalia dell'immagine
+    \label{fig:chagall}
+\end{figure}
+
+\begin{thebibliography}{999} %è un tipo di bibliografia
+\bibitem[Prudencio, 2015]{Prudencio2015} Prudencio, J., et al. "3D attenuation tomography of the volcanic island of Tenerife (Canary Islands)." Surveys in Geophysics 36 (2015): 693-716. %tra graffe c'è il label della citazione; tra quadre la cosa che verrà visualizzata nel testo.
+
+\hline %Disegna una linea orizzontale
+
+\bigskip
+HOLA
+
+
+\end{thebibliography}
+
+
+\end{document}
