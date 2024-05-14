@@ -1,0 +1,100 @@
+\documentclass{beamer} % "beamer" indica il tipo di file (presentazione)
+\usepackage{graphicx} % Required for inserting images
+
+% Per modificare i colori e i temi della presentazione vai su https://mpetroff.net/files/beamer-theme-matrix/ e cerca il tuo preferito:
+\usetheme{Frankfurt}
+\usecolortheme{crane}
+
+\title{My first presentation}
+\author{Silvia Girlanda}
+\date{May 2024}
+
+\begin{document}
+
+\maketitle
+
+%Per mettere il sommario (ricordati di ricompilare più volte per caricarlo):
+\AtBeginSection[] % Do nothing for \section*
+{
+\begin{frame}{Outline}
+\tableofcontents[currentsection]
+\end{frame}
+}
+
+\section{Introduction}
+
+%Le diapositive prendono il nome di "frame"
+\begin{frame}{My first slide}
+    My first slide
+\end{frame}
+
+%Per fare un elenco puntato:
+\begin{frame}{Itemization} 
+    \begin{itemize}
+        \item One
+        \item \pause Two % Per fare un'animazione:
+        \item \pause Three 
+    \end{itemize}
+\end{frame}
+
+%Per modificare la dimensione del testo, cerca sul web.
+\begin{frame}{Text dimension}
+    \scriptsize{Questo è un esempio di frase} %dimensione piccola
+    \huge {Questo è un altro esempio di frase} \\ %dimensione più grande; il doppio backslash mi permette di andare a capo 
+    Un altro ancora \textbf{esempio}: \textit{tanti esempi!} % Grassetto e corsivo
+\end{frame} 
+
+\section{Formulas}
+\begin{frame}{Formulas used}
+In questa tesi ho utilizzato la formula della \textbf{deviazione standard}:
+\smallskip %Per fare uno spazio piccolo
+%\bigskip: per fare uno spazio più grande
+
+%Per inserire una formula matematica, cerca come sempre sul web:
+\begin{equation}
+    \delta = \sqrt{\frac{\displaystyle\sum_{i=1}^N (x_i - \mu)^2}{N}} 
+    % Tutte le funzioni usate sopra le abbiamo trovate sul web: \displaystyle mette tutto in modo più fancy.
+\end{equation}
+    
+\end{frame}
+
+\section{Results}
+\begin{frame}{Achieved results pt 1}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{Frutto_Fiore.jpg} % Solitamente è bene usare 0.9 o anche solo .9 perchè ben si adatta a tutto
+    %Rimuovi \caption e \label perchè nelle presentazioni non servono a nulla
+    % \raggedright e \raggedleft per spostare a dx o a sx
+\end{figure}
+    
+\end{frame}
+
+%Per mettere due immagini una a lato dell'altra:
+\begin{frame}{Achieved results pt 2}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.4\linewidth]{Frutto_Fiore.jpg} 
+    \pause \includegraphics[width=0.4\linewidth]{Frutto_Fiore.jpg} %Anche qui con le immagini possiamo mettere \pause per fare un'animazione
+\end{figure}
+    
+\end{frame}
+
+%Per mettere quattro immagini, due sopra e due sotto:
+\begin{frame}{Achieved results pt 3}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.3\linewidth]{Frutto_Fiore.jpg} 
+    \includegraphics[width=0.3\linewidth]{Frutto_Fiore.jpg} \\
+    \includegraphics[width=0.3\linewidth]{Frutto_Fiore.jpg} 
+    \includegraphics[width=0.3\linewidth]{Frutto_Fiore.jpg} 
+\end{figure}
+    
+\end{frame}
+
+% Per inserire un testo con font Courier, tipico dei linguaggi di programmazione informatica:
+\begin{frame}{Courier}
+    In this project we made use of the R package 
+    \texttt{imageRy} %funzione per il font Courier
+\end{frame}
+
+\end{document}
