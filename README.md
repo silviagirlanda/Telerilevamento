@@ -1,5 +1,5 @@
 # Corso di Telerilevamento
-
+Questo corso ...
 🌞
 
 ## 
@@ -17,6 +17,14 @@ Non è richiesta alcuna conoscenza pregressa di R.
 È la stessa cosa di Note
 
 > **Link esterno al corso**
-[UNIBO] (https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2023/455369)
+[Sito Alma Mater Studiorum](https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2023/455369)
+
+## Principali pacchetti utilizzati:
+
+``` {r}
+library(imageRy)
+library(terra)
+
+
 
 
