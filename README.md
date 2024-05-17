@@ -1,8 +1,11 @@
 # Corso di Telerilevamento
-Questo corso ...
-🌞
+🌱 Questa repository è pensata per il corso di Telerilevamento geo-ecologico presso l'UNIBO 🌞
 
-## 
+## Corsi di magistrale coinvolti:
+Questo corso coinvolge i seguenti corsi di laurea magistrale:
++ Scienze e Gestione della Natura
++ Geologia e territorio
++ Geografia e processi territoriali
 
 ### Principali linguaggi utilizzati:
 
