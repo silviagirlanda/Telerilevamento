@@ -18,9 +18,10 @@ library(viridis)
 ```
 
 In order to visualize the list of data use:
-```{r, eval=T}
+```{r, eval=T} 
 im.list()
 ```
+<<>> eval= T: visualizza tutto il risultato del comando
 
 In order to import data we can use the following function:
 ```{r, eval=T}
