@@ -17,11 +17,10 @@ library(terra)
 library(viridis)
 ```
 
-In order to visualize the list of data use:
+In order to visualize the list of data use (eval= T: visualizza tutto il risultato del comando):
 ```{r, eval=T} 
 im.list()
 ```
-<<>> eval= T: visualizza tutto il risultato del comando
 
 In order to import data we can use the following function:
 ```{r, eval=T}
