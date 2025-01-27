@@ -59,7 +59,7 @@ im.plotRGB(m2006, 2, 3, 1) #2006 nir on blue
 
 #---------------------------------------------------4 aprile 2024
 #Calcolo indice di vegetazione "Different vegetation index" (DVI)
-#Prendo ogni singolo pixel della banda e faccio la sottrazione tra NIR e R per ottenere DVI
+#Prendo ogni singolo pixel della banda e faccio la sottrazione tra NIR e R per ottenere DVI: se il risultato della sottrazione sarà alto allora quel pixel comprende una zona di vegetazione.
 
 #DVI1992
 
