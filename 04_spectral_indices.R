@@ -61,7 +61,7 @@ im.plotRGB(m2006, 2, 3, 1) #2006 nir on blue
 #Calcolo indice di vegetazione "Different vegetation index" (DVI)
 #Prendo ogni singolo pixel della banda e faccio la sottrazione tra NIR e R per ottenere DVI: se il risultato della sottrazione sarà alto allora quel pixel comprende una zona di vegetazione.
 
-#DVI1992
+###DVI1992
 
 dvi1992 = m1992[[1]] - m1992[[2]] #dichiaro quale elemento voglio utilizzare, ossia il primo e secondo elemento di un'imm satellitare
 #c'è = perchè si tratta di un'operazione matematica
@@ -76,9 +76,9 @@ dvi1992
 cl <-colorRampPalette(c("darkblue","yellow","red","black"))(100) #simile ai colori della rainbowcolor, ma qui ci sta bene
 plot(dvi1992,col=cl)
 
-#DVI2006
+###DVI2006
 
-#Ripetiamo lo stesso per il DVI del 2006
+#Ripetiamo lo stesso per il DVI del 2006:
 #Importala e rinominala
 m2006<- im.import("matogrosso_ast_2006209_lrg.jpg")
 #Calcoliamo DVI2006:
@@ -88,22 +88,20 @@ dvi2006 = m2006[[1]] - m2006[[2]]
 cl <-colorRampPalette(c("darkblue","yellow","red","black"))(100) #giallo usato perchè è uno dei colori che colpisce maggiormente la retina
 plot(dvi2006,col=cl)
 
-#Esercizio: Plottiamo dvi1992 a lato di dvi2006
+#Esercizio: Plottiamo dvi1992 a lato di dvi2006 per metterle a confronto
 par(mfrow=c(1,2))
 plot(dvi1992,col=cl)
 plot(dvi2006,col=cl)
 #range è in funzione della radiazione radiometrica
 
-#NDVI (Normalized Difference Vegetation Index)
+#NDVI (Normalized Difference Vegetation Index): viene utilizzato se le immagini hanno bit differenti ed è uqindi necessaria una normalizzazione
 ndvi1992 = dvi1992 / (m1992[[1]] + m1992[[2]])
 ndvi2006 = dvi2006 / (m2006[[1]] + m2006[[2]])
 
-#Plottiamo:
+#Plottiamole insieme:
 par(mfrow=c(1,2))
 plot(ndvi1992,col=cl)
 plot(ndvi2006,col=cl)
 #il range NON è in funzione della radiazione radiometrica ma va da -1 a 1
 
-#Nel pacchetto imageRy è presente una funzione speciale:
-im.dvi #CONTROLLA
-im.ndvi #CONTROLLA
+#Nel pacchetto imageRy è presente una funzione speciale di imageRy: im.dvi e im.ndvi
