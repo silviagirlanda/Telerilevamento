@@ -46,8 +46,7 @@ plot(b4,col=clch)
 b8<-im.import("sentinel.dolomites.b8.tif") #infrarosso
 plot(b8,col=clch)
 
-#Creiamo un MULTIFRAME con la seguente funzione:
-par(mf) #mf sta per multiframe
+#Creiamo un MULTIFRAME con la seguente funzione:par(mf) #mf sta per multiframe
 par(mfrow=c(2,2)) #il primo valore indica il numero di righe, il secondo il numero di colonne. Sono un array quindi vanno concatenati con c
 #è stato così creato un telaio in cui andranno inserite le bande.
 par(mfrow=c(2,2))
