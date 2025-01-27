@@ -1,3 +1,4 @@
+##14 MARZO 2023------------------------------------------------------------
 #Satellite data visualization in R by imageRy
 
 #Richiamiamo i pacchetti utilizzati
