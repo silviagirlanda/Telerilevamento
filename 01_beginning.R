@@ -23,10 +23,10 @@ plot(flowers,bees)
 plot(flowers,bees,pch=19)
 
 #Posso cambiare la dimensione del simbolo
-plot(flowers,bees,pch=19,cex=2) # in questo caso raddoppio la dimensione
-plot(flowers,bees,pch=19,cex=.5) #qui si dimezza la dimensione
+plot(flowers,bees,pch=19,cex=2) #così raddoppio la dimensione
+plot(flowers,bees,pch=19,cex=.5) #così si dimezza la dimensione
 
-#Posso cambiare il colore, ricordandosi di metterlo tra virgolette ""
+#Posso cambiare il colore, ricorda di metterlo tra virgolette ""
 plot(flowers,bees,pch=19,cex=.5,col="cyan3")
 
 #Per salvare vai su "Commit changes..."
