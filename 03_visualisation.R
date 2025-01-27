@@ -28,7 +28,7 @@ clg<-colorRampPalette(c("black","gray","light grey"))(3)
 #uniamo tutto e plottiamo
 plot(b2,col=clg)
 
-#Possiamo aumentare i numeri di sfumature
+#Possiamo aumentare i numeri di sfumature, modificando il numero tra parentesi che indica i livelli del colore
 clg<-colorRampPalette(c("black","gray","light grey"))(100)
 #Proviamo a cambiare i colori
 clcyan<-colorRampPalette(c("magenta","cyan4","cyan"))(100)
