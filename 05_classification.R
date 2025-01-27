@@ -1,4 +1,4 @@
-#--------9 aprile 2024
+#----------------------------------------9 aprile 2024
 #Si parte da un'immagine satellitare, la importiamo, la classfichiamo e poi creereamo dei grafici. 
 
 #Quantifying land cover variability
