@@ -82,7 +82,7 @@ dev.off()
 #stacksent[[3]] = b4 = red
 #stacksent[[4]] = b8 = nir infrared
 
-im.plotRGB()
+#im.plotRGB()
 #Dichiaro nome immagine(qui stacksent) e dichiaro quali sono le tre compnenti che corrispondono ai 3 filtri
 im.plotRGB(stacksent,r=3,g=2,b=1)
 im.plotRGB(stacksent,3,2,1)
