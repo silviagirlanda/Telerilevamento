@@ -9,7 +9,9 @@ library(terra) #visualizzerai la versione del pacchetto installato, qui: terra 1
 
 #Installa la funzione devtools dal CRAN per poi poter usare imageRy
 install.packages("devtools") #ricordati sempre le virgolette
-library(devtools) #or require()
+#Per verificare che il pacchetto sia stato installato, richiamalo con la funzione library
+library(devtools)
+
 #Installa la repository imageRy da github
 install_github("ducciorocchini/imageRy")
 #Per verificare che il pacchetto sia stato installato, richiamalo con la funzione library
