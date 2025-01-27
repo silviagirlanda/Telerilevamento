@@ -1,9 +1,13 @@
 #----------------------------------------9 aprile 2024
 #Si parte da un'immagine satellitare, la importiamo, la classfichiamo e poi creereamo dei grafici. 
 
-#Quantifying land cover variability
+#Quantifying land cover variability:
+#Come facciamo a quantificare la foresta presente? Ne abbiamo 2:
+# -	Fare una classificazione: prendendo un’immagine, insegniamo al sistema le due classi di nostro interesse ( es. vegetazione e suolo nudo) e si fa una proporzione tra le due classi
+# -	Differenza tra gli indici DVI calcolati
 
-#Installiamo dei pacchetti necessari (ggplot2)
+
+#Installiamo dei pacchetti necessari: ggplot2 e patchwork
 install.packages("ggplot2")
 install.packages("patchwork")
 #Richiamiamolo con:
@@ -14,13 +18,13 @@ library(terra)
 library(imageRy)
 library(patchwork)
 
-#Lista di immagini:
+#Recupero la lista di immagini disponibili su imageRy:
 im.list()
 
-#Importiamo, anche, l'immagine del sole:
+#Importiamo l'immagine del sole:
 sun<-im.import("Solar_Orbiter_s_first_views_of_the_Sun_pillars.jpg") #nero livello energetico più basso, giallo livello energetico più alto
 
-#Classifichiamo i dievrsi livelli eneergetici del sole:
+#Classifichiamo i diversi livelli energetici del sole in 3 clusters:
 sunc<-im.classify(sun,num_clusters = 3) # tra parentesi c'è nome immagine e numero di clusters che vogliamo
 
 #Importiamo l'immagine del Matogrosso 1992 e rinominiamola:
@@ -48,15 +52,16 @@ plot(m2006c)
 #classe 1 = suolo nudo
 #classe 2 = foresta
 
-#Ora vogliamo quantificare le frequenze, ossia il numero di pixel in ogni classe: 
+#Ora vogliamo quantificare le FREQUENZE, ossia il numero di pixel in ogni classe: 
 
-#1992
+###1992
 
 f1992<-freq(m1992c)
 #Richiama l'oggetto:
-f1992 #qui visualizzerai il numero di pixel per ogni classe
+f1992 #qui visualizzerai il numero di pixel per ogni classe realizzata, ossia suolo nudo e foresta.
 
 #Ora facciamo una proporzione tra il numero di pixel di una classe e il totale.
+
 #Per conoscere il totale dei pixel:
 tot1992<-ncell(m1992c)
 
@@ -68,7 +73,7 @@ perc1992 = prop1992 * 100
 #Appuntiamo i dati ottenuti:
 #percentuali: foresta = 83%, suolo nudo = 17%
 
-#2006
+###2006
 
 #Ora ripetiamo lo stesso per il 2006:
 f2006<-freq(m2006c)
@@ -96,19 +101,20 @@ tabout <- data.frame(class, y1992, y2006)
 #Richiama l'oggetto:
 tabout
 
-#Per vedere la tabella:
+#Per vedere la tabella (attenzione che è case sensitive!):
 view(tabout)
 
-#Ora facciamo il grafico:
+#Ora facciamo il grafico per il 1992:
 ggplot(tabout, aes(x=class, y=y1992, color=class)) + geom_bar(stat="identity",fill="white")
 #aes ossia aestethic: attribuiamo i nostri assi e i colori classificati. 
 #con il + aggiungiamo un tipo di geometria ossia le barre dell'istogramma: con identity usiamo il valore così com'è
 
-#Ripetiamo lo stesso per il 2006:
+#Ripetiamo lo stesso per il grafico del 2006:
 ggplot(tabout, aes(x=class, y=y2006, color=class)) + geom_bar(stat="identity",fill="white")
 
-#Ora mettiamo insieme i grafici ottenuti.
-#Installiamo un pacchetto "patchwork" e richiama il pacchetto.
+#Ora mettiamo insieme i grafici ottenuti grazie al pacchetto "patchwork": si assegnano i grafici a degli oggetti e poi si sommano:
+#Richiama il pacchetto:
+library("patchwork")
 
 #Assegniamo a p1 e p2 i ggplot:
 p1<-ggplot(tabout, aes(x=class, y=y1992, color=class)) + geom_bar(stat="identity",fill="white")
