@@ -1,4 +1,11 @@
-####30 aprile 2024
+####---------------------------------------------------30 aprile 2024
+# MISURA DELLA VARIABILITA': a partire da un'immagine, si possono misurare i valori di riflettanza per ogni pixel. 
+# Vedendo come riflette ogni pixel per le bande si forma una grafico. Più sono simili i punti, più sarà compatta la nuvola di punti. 
+# Maggiore è la variabilità in termini spettrali maggiore sarà la variabilità a livello ambientale e quindi saranno presenti più nicchie ecologiche e più specie.
+# Si può applicare la stessa variabilità per la geomorfologia. Questo grazie alla deviazione standard: presa una curva normale, la ds sarà il 68% dei dati. 
+# Maggiore è la deviazione standard, maggiore sarà la variabilità ecosistemica/geomorfologica. Si possono creare delle mappe di variabilità con delle moving window.
+# Avendo un'immagine satellitare la si sottopone ad una finestra di 3 pixel di lato, si calcola la deviazione standard di ogni pixel e la si riporta sul pixel centrale
+#Così facendo si ottiene una mappa completa con tutte le deviazioni standard degli intervalli dati dalla grandezza della moving window. 
 
 #Riprendiamo i soliti pacchetti:
 library(imageRy) #da qui estrarremo il dato da utilizzare
