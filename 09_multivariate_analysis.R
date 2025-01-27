@@ -1,4 +1,4 @@
-##### 2 maggio 2024
+#####------------------------------------------------------ 2 maggio 2024
 #ANALISI MULTIVARIATA
 
 #Recuperiamo i pacchetti:
@@ -26,10 +26,12 @@ im.plotRGB(sentdo, r=4, g=3, b=2)
 im.plotRGB(sentdo, r=3, g=4, b=2)
 #banda 3 montata su rosso, banda 4 su verde, banda 2 su blu
 
-#Osserviamo quanto sono collegate tra di loro con la funzione "pairs", basato sulla matrice di Pearson:
+#Osserviamo quanto sono collegate tra di loro con la funzione "pairs": calcola la correlazione con la matrice di Pearson. 
+# Tra le bande blu, verde e rosso c'è un'alta correlazione (0.99 in un range che va da -1 (correlazione negativa) a 1(correlazione positiva))
+# Le immagini in diagonale e in verde mostrano le correlazioni tra le bande. Rosso, Verde e Blu sono correlate tr loro, il NIR ha una correlazione minore con le altre bande.
 pairs(sentdo)
 
-#PCA: portare un sistema da n bande ad una banda sola:
+#PCA (Principal Component Analysis): portare un sistema da n bande ad una banda sola:
 pcimage <- im.pca(sentdo)
 
 #per avere totale della dev standard di tutto il sistema fai la somma dei range di ogni asse
