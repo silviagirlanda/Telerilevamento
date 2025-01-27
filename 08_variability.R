@@ -48,7 +48,8 @@ plot(nir, col=cl)
 #Useremo la nuova funzione "focal" che permette di estarre valori focali, ossia statistiche, in un gruppo di valori: qui la dev standard.
 focal(nir, matrix (1/9, 3, 3), fun=sd)
 # nir è l'immagine usata
-# matrix: 1/9 perchè useremo un unico pixel su 9, la matrice è di 3 x 3 pixel. È l'unità di misura. 
+# matrix: è una matrice ossia il secondo argomento della funzione focal(). 1/9 perchè useremo un unico pixel su 9, la matrice è di 3 x 3 pixel. È l'unità di misura. 
+# numero di pixel per colonna e per riga;
 # funzione usata è "standard deviation" N.B. non nominare con sd perchè corrisponde al nome della funzione
 
 #Rinominiamo l'oggetto:
@@ -69,15 +70,17 @@ viridisc <- colorRampPalette(viridis(7))(100)
 #Plottiamolo:
 plot(sd3, col=viridisc)
 #alta variabilità a livello morfologico nelle zone di passaggio tra neve e non neve
+# la variabilità viene indicata con la differenza di colore: dove è stato rimarcato il giallo vi è maggiore variabilità. Vengono risaltati molto di più i bordi.
+# più è piccola la finestra, maggiore sarà la misura di dettaglio della deviazione standard. 
 
-#Calcola la sd di una moving window di 7 x 7 pixel:
+###Calcola la sd di una moving window di 7 x 7 pixel:
 sd7 <- focal(nir, matrix (1/49, 7, 7), fun=sd)
 
 #Plottiamolo:
 plot(sd7,col=viridisc)
 #essendoci più pixel nel calcolo, la ds risulta più alta in zone più ampie. Il valore massimo è inferiore a quello di prima perchè abbiamo più pixel simili, quindi minor sqm.
 
-#Calcola la sd di una moving window di 13 x 13 pixel:
+###Calcola la sd di una moving window di 13 x 13 pixel:
 sd13 <- focal(nir, matrix (1/169, 13, 13), fun=sd)
 
 #Facciamo uno stack delle 3 immagini delle sd:
@@ -86,6 +89,9 @@ sdstack <- c(sd3, sd7, sd13)
 #Plottiamo:
 plot(sdstack, col=viridisc)
 
+# La banda che più viene scelta per eseguire questi calcoli è quella del NIR perché è più discriminante. Se non ci fosse il nir, allora si potrebbe ovviare
+# con le componenti principali, delle quali la prima componente comprenderà la più ampia variabilità. Essendo le bande originali molto correlate tra loro si 
+# esegue l'analisi delle componenti principali così da avere la componente con la più alta variabilità. 
 ####-----
 #Introduzione a prossima lezione. 
 #Per vedere la correlazione:
