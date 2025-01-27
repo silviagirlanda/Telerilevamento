@@ -8,12 +8,12 @@ library(imageRy)
 im.list()
 
 #Importiamo l'immagine del Matogrosso del 1992:
-im.import("matogrosso_l5_1992219_lrg.jpg") #il nome del file è così perchè ha corrispondenza con il sito EarthObservatory o con Nasa Visible Earth
+im.import("matogrosso_l5_1992219_lrg.jpg") #il nome del file è così perchè ha corrispondenza con il sito EarthObservatory (o con Nasa Visible Earth), da cui è possibile ricavare informazioni a partire dal nome dellìimmagine.
 
 #Nominiamolo:
 m1992<-im.import("matogrosso_l5_1992219_lrg.jpg")
 
-#Bande
+#è stata creata con un plot di 3 bande:
 #banda 1 = infrarosso = NIR
 #banda 2 = rosso = R
 #banda 3 = verde = G
@@ -58,7 +58,7 @@ im.plotRGB(m2006, 2, 3, 1) #2006 nir on blue
 
 
 #---------------------------------------------------4 aprile 2024
-#Calcolo indice di vegetazione (DVI)
+#Calcolo indice di vegetazione "Different vegetation index" (DVI)
 #Prendo ogni singolo pixel della banda e faccio la sottrazione tra NIR e R per ottenere DVI
 
 #DVI1992
