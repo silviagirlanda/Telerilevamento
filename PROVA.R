@@ -49,10 +49,10 @@ im.plotRGB(a24, 1,2,3,title="2024")
 dev.off()
 
 ### NDVI ###
-Calcolo l'NDVI (Normalized Difference Vegetation Index), utilizzato se le immagini hanno bit differenti ed è quindi necessaria una normalizzazione.
-NDVI = NIR-RED/NIR+RED
+# Calcolo l'NDVI (Normalized Difference Vegetation Index), utilizzato se le immagini hanno bit differenti ed è quindi necessaria una normalizzazione.
+# NDVI = NIR-RED/NIR+RED
 
-Prima seleziono una scala di colori dal pacchetto viridis, inclusivo per le persone che soffrono di daltonismo.
+# Prima seleziono una scala di colori dal pacchetto viridis, inclusivo per le persone che soffrono di daltonismo.
 cl<-colorRampPalette(viridis(7))(100)
 
 NDVI_2017<-(a17[[4]]-a17[[1]])/(a17[[4]]+a17[[1]])
@@ -64,7 +64,7 @@ plot(NDVI_2019,col=cl)
 NDVI_2024<-(a24[[4]]-a24[[1]])/(a24[[4]]+a24[[1]])
 plot(NDVI_2024,col=cl)
 
-#Creo un multiframe e plotto le immagini insieme:
+# Creo un multiframe e plotto le immagini insieme:
 par(mfrow=c(1,3))
 plot(NDVI_2017,col=cl)
 plot(NDVI_2019,col=cl)
@@ -72,15 +72,15 @@ plot(NDVI_2024,col=cl)
 
 dev.off()
 
-#Calcolo la differenza in termini di NDVI tra 2017 e 2019 (??????????????????????????):
+# Calcolo la differenza in termini di NDVI tra 2017 e 2019 (??????????????????????????):
 NDVI_diff1<-NDVI_2017-NDVI_2019
 plot(NDVI_diff1, col=cl)
 
-E tra 2019 e 2024:
+# E tra 2019 e 2024:
 NDVI_diff2<-NDVI_2019-NDVI_2024
 plot(NDVI_diff2, col=cl)
 
-#Classifico in 2 classi:
+# Classifico in 2 classi:
 
 NDVI_class1<-im.classify(NDVI_diff1, 2)
 plot(NDVI_class1)
