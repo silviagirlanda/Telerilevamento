@@ -80,7 +80,7 @@ plot(NDVI_diff1, col=cl)
 NDVI_diff2<-NDVI_2019-NDVI_2024
 plot(NDVI_diff2, col=cl)
 
-# Classifico in 2 classi:
+##### Classifico in 2 classi:
 
 NDVI_class1<-im.classify(NDVI_diff1, 2)
 plot(NDVI_class1)
@@ -91,3 +91,9 @@ plot(NDVI_class2)
 par(mfrow=c(1,2))
 plot(NDVI_class1)
 plot(NDVI_class2)
+
+##### Classifico in 2 classi e inserisco in un multiframe con la funzione par():
+par(mfrow=c(1,3))
+class2017 <- im.classify(a17, num_clusters=2)
+class2019 <- im.classify(a19,num_clusters =2)
+class2024 <- im.classify(a24,num_clusters=2)
