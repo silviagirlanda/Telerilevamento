@@ -48,6 +48,18 @@ im.plotRGB(a24, 1,2,3,title="2024")
 #Chiudo il device precedente:
 dev.off()
 
-### CALCOLO NDVI ###
+### NDVI ###
+Calcolo l'NDVI (Normalized Difference Vegetation Index), utilizzato se le immagini hanno bit differenti ed è quindi necessaria una normalizzazione.
+NDVI = NIR-RED/NIR+RED
 
+Prima seleziono una scala di colori dal pacchetto viridis, inclusivo per le persone che soffrono di daltonismo.
+cl<-colorRampPalette(viridis(7))(255)
 
+NDVI_2017<-(a17[[4]]-a17[[1]])/(a17[[4]]+a17[[1]])
+plot(NDVI_2017,col=cl)
+
+NDVI_2019<-(a19[[4]]-a19[[1]])/(a19[[4]]+a19[[1]])
+plot(NDVI_2019,col=cl)
+
+NDVI_2024<-(a24[[4]]-a24[[1]])/(a24[[4]]+a24[[1]])
+plot(NDVI_2024,col=cl)
