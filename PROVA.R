@@ -47,6 +47,9 @@ im.plotRGB(a19, 4,3,2)
 im.plotRGB(a24, 3,2,1)
 im.plotRGB(a24, 4,3,2)
 
+#Chiudo il device precedente:
+dev.off()
+
 ### CALCOLO NDVI ###
 
 
