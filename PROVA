@@ -1,0 +1,12 @@
+####
+library(terra) # Per la funzione rast()
+library(imageRy) # Per im.plotRGB() e im.classify()
+library(viridis) # Per utilizzare colorRampPalette adatte a chi soffre di deuteranomalia (daltonismo)
+library(ggplot2) # Per la creazione dei boxplot
+library(patchwork) # Per visualizzare i boxplot insieme
+
+
+# Imposto la cartella di lavoro dove sono state posizionate le immagini relative all'altopiano Laceno.
+# Tale codice ha l'obiettivo di quantificare la variazione della superficie del Lago Laceno tra la 
+# stagione estiva e quella invernale e valutare l'andamento in un periodo compreso tra il 2017
+# e il 2020. 
