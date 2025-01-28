@@ -39,12 +39,12 @@ a24_8 <- rast("24_8.tiff")
 a24 <- c(a24_2, a24_3, a24_4, a24_8)
 
 #Creo un multiframe per visualizzare insieme le immagini grazie alla funzione par(), creando una griglia di 3 righe e 2 colonne.
-par(mfrow=c(2,3))
-im.plotRGB(a17, 1,2,3)
+par(mfrow=c(3,2))
+im.plotRGB(a17, 3,2,1)
 im.plotRGB(a17, 4,3,2)
-im.plotRGB(a19, 1,2,3)
+im.plotRGB(a19, 3,2,1)
 im.plotRGB(a19, 4,3,2)
-im.plotRGB(a24, 1,2,3)
+im.plotRGB(a24, 3,2,1)
 im.plotRGB(a24, 4,3,2)
 
 ### CALCOLO NDVI ###
