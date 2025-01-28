@@ -20,8 +20,8 @@ setwd("C:/Telerilevamento") #posizionata vicino alla sorgente del computer per f
 
 # Per ogni anno d'analisi, creo uno stack comprendente tutte le bande, assegnate precedentemente ad un oggetto. 
 17_2 <- rast("17_2.tiff")
-l7_3 <- rast("17_3.tiff")
-l7_4 <- rast("17_4.tiff")
+17_3 <- rast("17_3.tiff")
+17_4 <- rast("17_4.tiff")
 17_8 <- rast("17_8.tiff")
 17 <- c(17_2, 17_3, 17_4, 17_8)
 
