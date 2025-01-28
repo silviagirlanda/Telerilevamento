@@ -20,31 +20,32 @@ setwd("C:/Telerilevamento") #posizionata vicino alla sorgente del computer per f
 
 # Per ogni anno d'analisi, creo uno stack comprendente tutte le bande, assegnate precedentemente ad un oggetto. 
 
-a17_2 <- rast("17_2.tiff")
-a17_3 <- rast("17_3.tiff")
-a17_4 <- rast("17_4.tiff")
-a17_8 <- rast("17_8.tiff")
-a17 <- c(a17_2, a17_3, a17_4, a17_8)
+a17_4 <- rast("17_4.tiff") #red
+a17_3 <- rast("17_3.tiff") #green
+a17_2 <- rast("17_2.tiff") #blue
+a17_8 <- rast("17_8.tiff") #nir
+a17 <- c(a17_4, a17_3, a17_2, a17_8)
 
-a19_2 <- rast("19_2.tiff")
-a19_3 <- rast("19_3.tiff")
-a19_4 <- rast("19_4.tiff")
-a19_8 <- rast("19_8.tiff")
-a19 <- c(a19_2, a19_3, a19_4, a19_8)
+a19_4 <- rast("19_4.tiff") #red
+a19_3 <- rast("19_3.tiff") #green
+a19_2 <- rast("19_2.tiff") #blue
+a19_8 <- rast("19_8.tiff") #nir
+a19 <- c(a19_4, a19_3, a19_2, a19_8)
 
-a24_2 <- rast("24_2.tiff")
-a24_3 <- rast("24_3.tiff")
-a24_4 <- rast("24_4.tiff")
-a24_8 <- rast("24_8.tiff")
-a24 <- c(a24_2, a24_3, a24_4, a24_8)
+a24_4 <- rast("24_4.tiff") #red
+a24_3 <- rast("24_3.tiff") #green
+a24_2 <- rast("24_2.tiff") #blue
+a24_8 <- rast("24_8.tiff") #nir
+a24 <- c(a24_4, a24_3, a24_2, a24_8)
 
-#Creo un multiframe per visualizzare insieme le immagini grazie alla funzione par(), creando una griglia di 3 righe e 2 colonne.
+#Creo un multiframe per visualizzare insieme le immagini grazie alla funzione par(), creando una griglia di 3 righe e 2 colonne:
+
 par(mfrow=c(3,2))
-im.plotRGB(a17, 3,2,1)
+im.plotRGB(a17, 1,2,3)
 im.plotRGB(a17, 4,3,2)
-im.plotRGB(a19, 3,2,1)
+im.plotRGB(a19, 1,2,3)
 im.plotRGB(a19, 4,3,2)
-im.plotRGB(a24, 3,2,1)
+im.plotRGB(a24, 1,2,3)
 im.plotRGB(a24, 4,3,2)
 
 #Chiudo il device precedente:
