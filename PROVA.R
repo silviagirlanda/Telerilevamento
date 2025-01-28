@@ -19,11 +19,11 @@ setwd("C:/Telerilevamento") #posizionata vicino alla sorgente del computer per f
 # - infrarosso(b8).
 
 # Per ogni anno d'analisi, creo uno stack comprendente tutte le bande, assegnate precedentemente ad un oggetto. 
-17_2 <- rast("17_2.tiff")
-17_3 <- rast("17_3.tiff")
-17_4 <- rast("17_4.tiff")
-17_8 <- rast("17_8.tiff")
-17 <- c(17_2, 17_3, 17_4, 17_8)
+a17_2 <- rast("17_2.tiff")
+a17_3 <- rast("17_3.tiff")
+a17_4 <- rast("17_4.tiff")
+a17_8 <- rast("17_8.tiff")
+a17 <- c(a17_2, a17_3, a17_4, a17_8)
 
 ### CALCOLO NDVI ###
 
