@@ -87,3 +87,7 @@ plot(NDVI_class1)
 
 NDVI_class2<-im.classify(NDVI_diff2, 2)
 plot(NDVI_class2)
+
+par(mfrow=c(1,2))
+plot(NDVI_class1)
+plot(NDVI_class2)
