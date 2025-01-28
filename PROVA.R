@@ -1,4 +1,4 @@
-####
+#### FASE PRELIMINARE ####
 #Installo i pacchetti necessari:
 library(terra) # Per la funzione rast()
 library(imageRy) # Per im.plotRGB() e im.classify()
@@ -12,7 +12,19 @@ library(patchwork) # Per visualizzare i boxplot insieme
 # mettendo a confronto l'estate del 2017 (pre Vaia), l'estate del 2019 (post Vaia) e l'estate del 2024. L'area analizzata ricopre circa 93 km2.
 setwd("C:/Telerilevamento") #posizionata vicino alla sorgente del computer per facilitare i percorsi
 
-# Le immagini sono state catturate da Sentil-2 e scaricate liberamente da Copernicus Browser, sottoforma di file TIFF-16bit.
-# Sono state scaricate le immagini relative alle bande del blu, del verde, del rosso e NIR.
+# Le immagini sono state catturate da Sentil-2 e scaricate liberamente da Copernicus Browser, sottoforma di file TIFF-16bit, selezionando le bande del:
+# - blu (b2);
+# - verde(b3);
+# - rosso(b4);
+# - infrarosso(b8).
+
+# Per ogni anno d'analisi, creo uno stack comprendente tutte le bande, assegnate precedentemente ad un oggetto. 
+17_2 <- rast("17_2.tiff")
+l7_3 <- rast("17_3.tiff")
+l7_4 <- rast("17_4.tiff")
+17_8 <- rast("17_8.tiff")
+17 <- c(17_2, 17_3, 17_4, 17_8)
+
+### CALCOLO NDVI ###
 
 
