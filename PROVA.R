@@ -7,7 +7,12 @@ library(ggplot2) # Per la creazione dei boxplot
 library(patchwork) # Per visualizzare i boxplot insieme
 
 
-# Imposto la cartella di lavoro dove sono state posizionate le immagini relative all'altopiano Laceno.
-# Tale codice ha l'obiettivo di quantificare la variazione della superficie del Lago Laceno tra la 
-# stagione estiva e quella invernale e valutare l'andamento in un periodo compreso tra il 2017
-# e il 2020. 
+# Imposto la cartella di lavoro, dove sono state posizionate le immagini relative alla zona di Predazzo e vicina alla Foresta di Paneveggio (avendo cura di sostiuire i backslash con gli slash).
+# Il seguente codice ha l'obiettivo di evidenziare i cambiamenti nei termini di copertura forestale a seguito della tempesta Vaia del 2018 e della conseguente diffusione epidemica del bostrico (Ips typographus),
+# mettendo a confronto l'estate del 2017 (pre Vaia), l'estate del 2019 (post Vaia) e l'estate del 2024. L'area analizzata ricopre circa 93 km2.
+setwd("C:/Telerilevamento") #posizionata vicino alla sorgente del computer per facilitare i percorsi
+
+# Le immagini sono state catturate da Sentil-2 e scaricate liberamente da Copernicus Browser, sottoforma di file TIFF-16bit.
+# Sono state scaricate le immagini relative alle bande del blu, del verde, del rosso e NIR.
+
+
