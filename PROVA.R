@@ -1,4 +1,5 @@
 ####
+#Installo i pacchetti necessari:
 library(terra) # Per la funzione rast()
 library(imageRy) # Per im.plotRGB() e im.classify()
 library(viridis) # Per utilizzare colorRampPalette adatte a chi soffre di deuteranomalia (daltonismo)
