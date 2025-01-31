@@ -1,4 +1,6 @@
-#----------------------------------------9 aprile 2024
+#-------------------------------------------------------------------------------------------------------------------------------------9 aprile 2024
+
+#  CLASSIFICATION_____________________________________________________________________________________
 #Si parte da un'immagine satellitare, la importiamo, la classfichiamo e poi creereamo dei grafici. 
 
 #Quantifying land cover variability:
@@ -10,13 +12,12 @@
 #Installiamo dei pacchetti necessari: ggplot2 e patchwork
 install.packages("ggplot2")
 install.packages("patchwork")
-#Richiamiamolo con:
-library(ggplot2)
 
-#Richiamiamo anche gli altri pacchetti:
+#Richiamiamo questi nuovi pacchetti e anche gli altri precedentemente usati:
 library(terra)
 library(imageRy)
 library(patchwork)
+library(ggplot2)
 
 #Recupero la lista di immagini disponibili su imageRy:
 im.list()
@@ -25,7 +26,7 @@ im.list()
 sun<-im.import("Solar_Orbiter_s_first_views_of_the_Sun_pillars.jpg") #nero livello energetico più basso, giallo livello energetico più alto
 
 #Classifichiamo i diversi livelli energetici del sole in 3 clusters:
-sunc<-im.classify(sun,num_clusters = 3) # tra parentesi c'è nome immagine e numero di clusters che vogliamo
+sunc<-im.classify(sun,num_clusters = 3) # tra parentesi c'è nome dell'immagine e numero di clusters che vogliamo
 
 #Importiamo l'immagine del Matogrosso 1992 e rinominiamola:
 m1992<-im.import("matogrosso_l5_1992219_lrg.jpg")
