@@ -49,7 +49,7 @@ a24_2 <- rast("24_2.tiff") #blue
 a24_8 <- rast("24_8.tiff") #nir
 a24 <- c(a24_4, a24_3, a24_2, a24_8)
 
-#Creo un multiframe per visualizzare insieme le immagini grazie alla funzione par(), creando una griglia di 1 riga e 3 colonne e aggiungendo i titoli:
+#Creo un multiframe per visualizzare insieme le immagini in true color grazie alla funzione par(), creando una griglia di 1 riga e 3 colonne e aggiungendo i titoli:
 
 par(mfrow=c(1,3))
 im.plotRGB(a17, 1,2,3,title="2017")
