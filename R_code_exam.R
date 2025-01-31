@@ -69,7 +69,7 @@ dev.off()
 ##### DVI ###### ELIMINALOOOOOOOOOOOOOO POIIIIIIII
 # Calcolo della DVI
 cl<-colorRampPalette(viridis(7))(100)
-
+no<-colorRampPalette(c("darkblue","yellow","red","black"))(100)
 DVI_2017<-a17[[4]]-a17[[1]]
 plot(DVI_2017,col=cl)
 
@@ -85,7 +85,6 @@ plot(DVI_2024,col=cl)
 
 # Prima seleziono una scala di colori dal pacchetto viridis, inclusivo per le persone che soffrono di daltonismo.
 cl<-colorRampPalette(viridis(7))(100)
-no<-colorRampPalette(c("darkblue","yellow","red","black"))(100)
 
 NDVI_2017<-(a17[[4]]-a17[[1]])/(a17[[4]]+a17[[1]])
 plot(NDVI_2017,col=cl)
@@ -101,6 +100,7 @@ par(mfrow=c(1,3))
 plot(NDVI_2017,col=cl)
 plot(NDVI_2019,col=cl)
 plot(NDVI_2024,col=cl)
+#il range non è in funzione della radiazione radiometrica ma è un valore adimensionale che va da -1 a 1.
 
 dev.off()
 
