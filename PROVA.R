@@ -1,5 +1,16 @@
 #### FASE PRELIMINARE ####
-#Installo i pacchetti necessari:
+#Installo i pacchetti necessari dal CRAN con la funzione install.packages(), il pacchetto va inserito tra virgolette:
+# install.packages("terra")
+# install.packages("ggplot2")
+# install.packages("patchwork")
+# install.packages("viridis")
+
+# Per quanto riguarda imageRy, pacchetto esterno al CRAN e disponibile su GitHub, installo prima la funzione devtools() del CRAN:
+# install.packages("devtools") 
+# library(devtools)
+# devtools::install_github("duccioroccchini/imageRy") #i due punti ripetuti indicano che install_github è funzione del pacchetto devtools
+
+# Richiamo i pacchetti necessari, senza la necessità di usare le virgolette in quanto già presenti in R:
 library(terra) # Per la funzione rast()
 library(imageRy) # Per im.plotRGB() e im.classify()
 library(viridis) # Per utilizzare colorRampPalette adatte a chi soffre di deuteranomalia (daltonismo)
