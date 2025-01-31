@@ -56,17 +56,23 @@ im.plotRGB(a17, 1,2,3,title="2017")
 im.plotRGB(a19, 1,2,3,title="2019")
 im.plotRGB(a24, 1,2,3,title="2024")
 
-###VOGLIO METTERE QUALCOSA X EVIDENZIARE IL NIR??????????
+#Sostitusico il filtro rosso con la componente infrarossa per evidenziare il verde, ossia la copertura forestale: tutto quello che riflette infrarosso diventerà rosso
+par(mfrow=c(1,3))
+im.plotRGB(a17, 4,3,2,title="2017 (nir)")
+im.plotRGB(a19, 4,3,2,title="2019 (nir)")
+im.plotRGB(a24, 4,3,2,title="2024 (nir)")
+##############àQUI SI METTONO IN ORDINE COSì PERCHè SI FA COSì E BOONE?
 
 #Chiudo il device precedente:
 dev.off()
 
-### NDVI ###
+##### NDVI #####
 # Calcolo l'NDVI (Normalized Difference Vegetation Index), utilizzato se le immagini hanno bit differenti ed è quindi necessaria una normalizzazione.
 # NDVI = NIR-RED/NIR+RED
 
 # Prima seleziono una scala di colori dal pacchetto viridis, inclusivo per le persone che soffrono di daltonismo.
 cl<-colorRampPalette(viridis(7))(100)
+no<-colorRampPalette(c("darkblue","yellow","red","black"))(100)
 
 NDVI_2017<-(a17[[4]]-a17[[1]])/(a17[[4]]+a17[[1]])
 plot(NDVI_2017,col=cl)
