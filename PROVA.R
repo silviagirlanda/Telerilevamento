@@ -56,6 +56,8 @@ im.plotRGB(a17, 1,2,3,title="2017")
 im.plotRGB(a19, 1,2,3,title="2019")
 im.plotRGB(a24, 1,2,3,title="2024")
 
+###VOGLIO METTERE QUALCOSA X EVIDENZIARE IL NIR??????????
+
 #Chiudo il device precedente:
 dev.off()
 
