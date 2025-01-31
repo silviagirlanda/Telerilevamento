@@ -104,7 +104,7 @@ plot(NDVI_2024,col=cl)
 #il range non è in funzione della radiazione radiometrica ma è un valore adimensionale che va da -1 a 1.
 
 dev.off()
-
+#-----------------------
 # Calcolo la differenza in termini di NDVI tra 2017 e 2019 (??????????????????????????):
 NDVI_diff1<-NDVI_2017-NDVI_2019
 plot(NDVI_diff1, col=cl)
@@ -172,12 +172,53 @@ plot(class_19)
 class_24 <- im.classify(a24,num_clusters = 3)
 plot(class_24)
 
+######## Classifico con NDVI
+# classe 1 = 
+# classe 2 =
+# classe 3 =
+
+c_ndvi17 <- im.classify(NDVI_2017,num_clusters = 3) ###########immagine mi da problemi
+plot(c_ndvi17)
+
+c_ndvi19 <- im.classify(NDVI_2019,num_clusters = 3)
+plot(c_ndvi19)
+
+c_ndvi24 <- im.classify(NDVI_2024,num_clusters = 3)
+plot(c_ndvi24)
+
+#Ora proviamo a calcolare le FREQUENZE (classe 2 divrebbe essere quella delle foreste):
+
+###ndvi2017
 
 
+####ndvi2019
+f_19 <- freq(c_ndvi19) 
+tot_19<-ncell(c_ndvi19) #per conoscere il totale dei pixel:
+prop_19 = f_19 / tot_19 #proporzione
+perc_19 = prop_19 * 100 #percentuali: classe 1 = 6.3%  classe 2 = 75.3% classe 3 = 18.4%
 
+####ndvi2024
+f_24 <- freq(c_ndvi24) 
+tot_24<-ncell(c_ndvi24) #per conoscere il totale dei pixel:
+prop_42 = f_24 / tot_24 #proporzione
+perc_24 = prop_24 * 100 #percentuali: classe 1 = 7.5%  classe 2 = 70.6% classe 3 = 21.9%
 
+#Ottenuti i dati, costruiamo un DATASET, con la funzione data.frame che ci consente di creare delle tabelle:
+class <- c("bosco","uomo/neve/ghiaccio","no bosco")
+y2019 <- c(75.3,6.3,18.4)
+y2024 <- c(45,7.5,21.9)
 
+tabout <- data.frame(class, y2019, y2024)
 
+#Per vedere la tabella (attenzione che è case sensitive!):
+view(tabout)
 
+#Realizzo i grafici per i singoli anni:
+ggplot(tabout, aes(x=class, y=y2019, color=class)) + geom_bar(stat="identity",fill="white")
+ggplot(tabout, aes(x=class, y=y2024, color=class)) + geom_bar(stat="identity",fill="white")
 
+#Per aggiustare questo, diamo un intervallo di valori per la y con la funzione ylim:
+p1<-ggplot(tabout, aes(x=class, y=y2019, color=class)) + geom_bar(stat="identity",fill="white") + ylim(c(0,100))
+p2<-ggplot(tabout, aes(x=class, y=y2024, color=class)) + geom_bar(stat="identity",fill="white") + ylim(c(0,100))
 
+p1 + p2 #Per vedere il confronto
