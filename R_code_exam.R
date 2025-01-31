@@ -1,4 +1,5 @@
 #### FASE PRELIMINARE ####
+{"type":"Polygon","coordinates":[[[11.587418,46.262112],[11.587418,46.331832],[11.742943,46.331832],[11.742943,46.262112],[11.587418,46.262112]]]}
 #Installo i pacchetti necessari dal CRAN con la funzione install.packages(), il pacchetto va inserito tra virgolette:
 # install.packages("terra")
 # install.packages("ggplot2")
@@ -112,9 +113,9 @@ plot(NDVI_diff1, col=cl)
 NDVI_diff2<-NDVI_2019-NDVI_2024
 plot(NDVI_diff2, col=cl)
 
-##### Classifico in 2 classi:
-
-NDVI_class1<-im.classify(NDVI_diff1, 2)
+##### CLASSIFICAZIONE in 2 classi:
+___________________________________________________________________________________???????????????????????????????
+NDVI_class1<-im.classify(NDVI_diff1,num_clusters = 2)
 plot(NDVI_class1)
 
 NDVI_class2<-im.classify(NDVI_diff2, 2)
@@ -123,13 +124,39 @@ plot(NDVI_class2)
 par(mfrow=c(1,2))
 plot(NDVI_class1)
 plot(NDVI_class2)
+____________________________??????????????????????????
+##### Classifico in 2 classi (è giusto il numero di 2 classi o sarebbe meglio 3????): 
+#classe 1 = foresta abbattuta da Vaia o colpita da bostrico, insiedamenti urbani
+#classe 2 = foresta sana e rigogliosa
 
-##### Classifico in 2 classi e inserisco in un multiframe con la funzione par():
-par(mfrow=c(1,3))
-class2017 <- im.classify(a17, num_clusters=2)
-class2019 <- im.classify(a19,num_clusters =2)
-class2024 <- im.classify(a24,num_clusters=2)
+class17 <- im.classify(a17,num_clusters = 2)
+plot(class17)
+
+class19 <- im.classify(a19,num_clusters = 2)
+plot(class19)
+
+class24 <- im.classify(a24,num_clusters = 2)
+plot(class24)
+
+#Ora vogliamo quantificare le FREQUENZE, ossia il numero di pixel in ogni classe: 
+f17<-freq(class17) #se richiamo l'oggetto, vedrò la quantità di pixel per ogni classe
+
+#Ora facciamo una proporzione tra il numero di pixel di una classe (CHE CLASSE??????) e il totale.
+tot17<-ncell(class17) #per conoscere il totale dei pixel:
+prop17 = f17 / tot17 #proporzione
+perc17 = prop17 * 100 #percentuali: classe 1 = 60.57%  classe 2 = 39.43%
+
+f19 <- freq(class19) 
+tot19<-ncell(class19) #per conoscere il totale dei pixel:
+prop19 = f19 / tot19 #proporzione
+perc19 = prop19 * 100 #percentuali: classe 1 = 63.19%  classe 2 = 36.81%
+
+f24 <- freq(class24) 
+tot24<-ncell(class24) #per conoscere il totale dei pixel:
+prop24 = f24 / tot24 #proporzione
+perc24 = prop24 * 100 #percentuali: classe 1 = 56.15%  classe 2 = 43.85%
+
+#########non sono per niente convinta
 
 
-{"type":"Polygon","coordinates":[[[11.587418,46.262112],[11.587418,46.331832],[11.742943,46.331832],[11.742943,46.262112],[11.587418,46.262112]]]}
-{"type":"Polygon","coordinates":[[[11.587418,46.262112],[11.587418,46.331832],[11.742943,46.331832],[11.742943,46.262112],[11.587418,46.262112]]]}
+
