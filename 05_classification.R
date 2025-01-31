@@ -103,7 +103,7 @@ tabout <- data.frame(class, y1992, y2006)
 tabout
 
 #Per vedere la tabella (attenzione che è case sensitive!):
-view(tabout)
+View(tabout)
 
 #Ora facciamo il grafico per il 1992:
 ggplot(tabout, aes(x=class, y=y1992, color=class)) + geom_bar(stat="identity",fill="white")
