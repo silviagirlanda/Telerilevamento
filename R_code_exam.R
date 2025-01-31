@@ -114,7 +114,7 @@ NDVI_diff2<-NDVI_2019-NDVI_2024
 plot(NDVI_diff2, col=cl)
 
 ##### CLASSIFICAZIONE in 2 classi:
-___________________________________________________________________________________???????????????????????????????
+#___________________________________________________________________________________???????????????????????????????
 NDVI_class1<-im.classify(NDVI_diff1,num_clusters = 2)
 plot(NDVI_class1)
 
@@ -124,7 +124,7 @@ plot(NDVI_class2)
 par(mfrow=c(1,2))
 plot(NDVI_class1)
 plot(NDVI_class2)
-____________________________??????????????????????????
+#____________________________??????????????????????????
 ##### Classifico in 2 classi (è giusto il numero di 2 classi o sarebbe meglio 3????): 
 #classe 1 = foresta abbattuta da Vaia o colpita da bostrico, insiedamenti urbani
 #classe 2 = foresta sana e rigogliosa
@@ -157,6 +157,27 @@ prop24 = f24 / tot24 #proporzione
 perc24 = prop24 * 100 #percentuali: classe 1 = 56.15%  classe 2 = 43.85%
 
 #########non sono per niente convinta
+########quindi
+### ##### Classifico in 3 classi: 
+#classe 1 =
+#classe 2 =
+#classe 3 =
+
+class_17 <- im.classify(a17,num_clusters = 3)
+plot(class_17)
+
+class_19 <- im.classify(a19,num_clusters = 3)
+plot(class_19)
+
+class_24 <- im.classify(a24,num_clusters = 3)
+plot(class_24)
+
+
+
+
+
+
+
 
 
 
