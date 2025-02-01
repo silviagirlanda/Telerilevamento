@@ -180,9 +180,9 @@ class_24 <- im.classify(a24,num_clusters = 3)
 plot(class_24)
 
 ######## Classifico con NDVI
-# classe 1 = 
-# classe 2 =
-# classe 3 =
+# classe 1 = uomo/neve/ghiaccio
+# classe 2 = foresta/bosco
+# classe 3 = prati/no bosco
 
 c_ndvi17 <- im.classify(NDVI_2017,num_clusters = 3)
 plot(c_ndvi17)
@@ -215,8 +215,9 @@ perc_24 = prop_24 * 100 #percentuali: classe 1 = 7.5%  classe 2 = 70.6% classe 3
 
 #Ottenuti i dati, costruiamo un DATASET, con la funzione data.frame che ci consente di creare delle tabelle:
 class <- c("bosco","uomo/neve/ghiaccio","no bosco")
+y2017 <- c(76.1,9,14.9)
 y2019 <- c(75.3,6.3,18.4)
-y2024 <- c(45,7.5,21.9)
+y2024 <- c(70.6,7.5,21.9)
 
 tabout <- data.frame(class, y2019, y2024)
 
