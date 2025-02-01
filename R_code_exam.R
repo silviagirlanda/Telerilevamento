@@ -220,7 +220,7 @@ perc_19 = prop_19 * 100 #percentuali: classe 1 = 6.3%  classe 2 = 75.3% classe 3
 ####ndvi2024
 f_24 <- freq(c_ndvi24) 
 tot_24<-ncell(c_ndvi24) #per conoscere il totale dei pixel:
-prop_42 = f_24 / tot_24 #proporzione
+prop_24 = f_24 / tot_24 #proporzione
 perc_24 = prop_24 * 100 #percentuali: classe 1 = 7.5%  classe 2 = 70.6% classe 3 = 21.9%
 
 #Ottenuti i dati, costruiamo un DATASET, con la funzione data.frame che ci consente di creare delle tabelle:
