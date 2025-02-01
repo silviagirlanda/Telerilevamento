@@ -229,10 +229,10 @@ y2017 <- c(76.1,9,14.9)
 y2019 <- c(75.3,6.3,18.4)
 y2024 <- c(70.6,7.5,21.9)
 
-tabout <- data.frame(class, y2019, y2024)
+tabout <- data.frame(class, y2017, y2019, y2024)
 
 #Per vedere la tabella (attenzione che è case sensitive!):
-view(tabout)
+View(tabout)
 
 #Realizzo i grafici per i singoli anni:
 ggplot(tabout, aes(x=class, y=y2017, color=class)) + geom_bar(stat="identity",fill="white")
@@ -245,3 +245,17 @@ p2<-ggplot(tabout, aes(x=class, y=y2019, color=class)) + geom_bar(stat="identity
 p3<-ggplot(tabout, aes(x=class, y=y2024, color=class)) + geom_bar(stat="identity",fill="white") + ylim(c(0,100))
 
 p1 + p2 + p3 #Per vedere il confronto
+#####################################################
+##Altro DATASET:
+anno <- c("2017","2019","2024")
+bosco <- c(76.1,75.3,70.6)
+no_bosco <- c(14.9,18.4,21.9)
+altro <- c(9,6.3,7.5)
+
+tabout2 <- data.frame(anno, bosco, no_bosco, altro)
+
+p1<-ggplot(tabout2, aes(x=anno, y=bosco, color=class)) + geom_bar(stat="identity",fill="white") + ylim(c(0,100))
+p2<-ggplot(tabout2, aes(x=anno, y=no_bosco, color=class)) + geom_bar(stat="identity",fill="white") + ylim(c(0,100))
+p3<-ggplot(tabout2, aes(x=anno, y=altro, color=class)) + geom_bar(stat="identity",fill="white") + ylim(c(0,100))
+
+
