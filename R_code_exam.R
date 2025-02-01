@@ -71,6 +71,16 @@ im.plotRGB(a19, 4,3,2,title="2019 (nir)")
 im.plotRGB(a24, 4,3,2,title="2024 (nir)")
 ##############àQUI SI METTONO IN ORDINE COSì PERCHè SI FA COSì E BOONE?
 
+#Multiframe confronto tra tc e nir
+par(mfrow=c(2,3))
+im.plotRGB(a17, 1,2,3,title="2017")
+im.plotRGB(a19, 1,2,3,title="2019")
+im.plotRGB(a24, 1,2,3,title="2024")
+im.plotRGB(a17, 4,3,2,title="2017 (nir)")
+im.plotRGB(a19, 4,3,2,title="2019 (nir)")
+im.plotRGB(a24, 4,3,2,title="2024 (nir)")
+
+
 #Chiudo il device precedente:
 dev.off()
 
