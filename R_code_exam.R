@@ -32,10 +32,17 @@ setwd("C:/Telerilevamento") #posizionata vicino alla sorgente del computer per f
 
 # Per ogni anno d'analisi, creo uno stack comprendente tutte le bande, assegnate precedentemente ad un oggetto. 
 
-a17_4 <- rast("17_4.tiff") #red
-a17_3 <- rast("17_3.tiff") #green
-a17_2 <- rast("17_2.tiff") #blue
-a17_8 <- rast("17_8.tiff") #nir
+#Alla fine ho cambiato immagine perchè quezta mi dava problemi con NDVI classificazione:
+#a17_4 <- rast("17_4.tiff") #red
+#a17_3 <- rast("17_3.tiff") #green
+#a17_2 <- rast("17_2.tiff") #blue
+a#17_8 <- rast("17_8.tiff") #nir
+#a17 <- c(a17_4, a17_3, a17_2, a17_8)
+
+a17_4 <- rast("17b_4.tiff") #red
+a17_3 <- rast("17b_3.tiff") #green
+a17_2 <- rast("17b_2.tiff") #blue
+a17_8 <- rast("17b_8.tiff") #nir
 a17 <- c(a17_4, a17_3, a17_2, a17_8)
 
 a19_4 <- rast("19_4.tiff") #red
@@ -177,7 +184,7 @@ plot(class_24)
 # classe 2 =
 # classe 3 =
 
-c_ndvi17 <- im.classify(NDVI_2017,num_clusters = 3) ###########immagine mi da problemi
+c_ndvi17 <- im.classify(NDVI_2017,num_clusters = 3)
 plot(c_ndvi17)
 
 c_ndvi19 <- im.classify(NDVI_2019,num_clusters = 3)
@@ -186,10 +193,13 @@ plot(c_ndvi19)
 c_ndvi24 <- im.classify(NDVI_2024,num_clusters = 3)
 plot(c_ndvi24)
 
-#Ora proviamo a calcolare le FREQUENZE (classe 2 divrebbe essere quella delle foreste):
+#Ora proviamo a calcolare le FREQUENZE (classe 2 dovrebbe essere quella delle foreste):
 
-###ndvi2017
-
+####ndvi2017
+f_17 <- freq(c_ndvi17) 
+tot_17<-ncell(c_ndvi17) #per conoscere il totale dei pixel:
+prop_17 = f_17 / tot_17 #proporzione
+perc_17 = prop_17 * 100 #percentuali: classe 1 = 9%  classe 2 = 76.1% classe 3 = 14.9%
 
 ####ndvi2019
 f_19 <- freq(c_ndvi19) 
@@ -214,11 +224,13 @@ tabout <- data.frame(class, y2019, y2024)
 view(tabout)
 
 #Realizzo i grafici per i singoli anni:
+ggplot(tabout, aes(x=class, y=y2017, color=class)) + geom_bar(stat="identity",fill="white")
 ggplot(tabout, aes(x=class, y=y2019, color=class)) + geom_bar(stat="identity",fill="white")
 ggplot(tabout, aes(x=class, y=y2024, color=class)) + geom_bar(stat="identity",fill="white")
 
 #Per aggiustare questo, diamo un intervallo di valori per la y con la funzione ylim:
-p1<-ggplot(tabout, aes(x=class, y=y2019, color=class)) + geom_bar(stat="identity",fill="white") + ylim(c(0,100))
-p2<-ggplot(tabout, aes(x=class, y=y2024, color=class)) + geom_bar(stat="identity",fill="white") + ylim(c(0,100))
+p1<-ggplot(tabout, aes(x=class, y=y2017, color=class)) + geom_bar(stat="identity",fill="white") + ylim(c(0,100))
+p2<-ggplot(tabout, aes(x=class, y=y2019, color=class)) + geom_bar(stat="identity",fill="white") + ylim(c(0,100))
+p3<-ggplot(tabout, aes(x=class, y=y2024, color=class)) + geom_bar(stat="identity",fill="white") + ylim(c(0,100))
 
-p1 + p2 #Per vedere il confronto
+p1 + p2 + p3 #Per vedere il confronto
