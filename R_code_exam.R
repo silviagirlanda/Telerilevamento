@@ -172,6 +172,7 @@ p3<-ggplot(tabout2, aes(x=anno, y=altro, color=class)) + geom_bar(stat="identity
 p1 + p2 + p3 #Per vedere il confronto
 
 # MISURA della VARIABILITA':
+clsd<- colorRampPalette(c("yellow","darkslategray")) (100)
 #------------2017
 nir <- a17[[4]]
 plot(nir)
@@ -185,7 +186,7 @@ focal(nir, matrix (1/9, 3, 3), fun=sd)
 
 #Rinominiamo l'oggetto:
 sd2017 <- focal(nir, matrix (1/9, 3, 3), fun=sd)
-plot(sd2017)
+plot(sd2017,col=clsd)
 
 #-----------2019
 nir2 <- a19[[4]]
@@ -193,7 +194,7 @@ plot(nir)
 focal(nir2, matrix (1/9, 3, 3), fun=sd)
 #Rinominiamo l'oggetto:
 sd2019 <- focal(nir2, matrix (1/9, 3, 3), fun=sd)
-plot(sd2019)
+plot(sd2019,col=clsd)
 
 #------------2024
 nir3 <- a24[[4]]
@@ -201,10 +202,23 @@ plot(nir3)
 focal(nir3, matrix (1/9, 3, 3), fun=sd)
 #Rinominiamo l'oggetto:
 sd2024 <- focal(nir3, matrix (1/9, 3, 3), fun=sd)
-plot(sd2024)
+plot(sd2024,col=clsd)
 
 #Ora creaiamo un mutliframe:
+clsd<- colorRampPalette(c("yellow","darkslategray")) (100)
 par(mfrow=c(1,3))
-plot(sd2017,col=cl)
-plot(sd2019,col=cl)
-plot(sd2024,col=cl)
+plot(sd2017,col=clsd)
+plot(sd2019,col=clsd)
+plot(sd2024,col=clsd)
+
+##ANALISI MULTIVARIATA
+pca2024 <- im.pca(a24)
+tot <-sum(7275.0102 + 3682.7380 + 356.1203 + 184.6525)
+7275.0102 * 100/tot
+# 63.2691
+3682.7380 * 100/tot
+# 32.02793
+356.1203 * 100/tot
+#3.097097
+184.6525 * 100/tot
+# 1.60588
