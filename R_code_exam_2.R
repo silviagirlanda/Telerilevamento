@@ -1,6 +1,5 @@
-#### FASE PRELIMINARE ####
-{"type":"Polygon","coordinates":[[[11.675308,46.301429],[11.591331,46.301429],[11.591331,46.267905],[11.675308,46.267905],[11.675308,46.301429]]]}
-NOTA BENE è TUTTO DA SOSTIUIRE CON LE NUOVE COORDINATE, VEDI SE è NECESSARIO O BONE
+#### FASE PRELIMINARE #### copia al 3/02/2025
+{"type":"Polygon","coordinates":[[[11.587418,46.262112],[11.587418,46.331832],[11.742943,46.331832],[11.742943,46.262112],[11.587418,46.262112]]]}
 #Installo i pacchetti necessari dal CRAN con la funzione install.packages(), il pacchetto va inserito tra virgolette:
 # install.packages("terra")
 # install.packages("ggplot2")
@@ -33,10 +32,17 @@ setwd("C:/Telerilevamento") #posizionata vicino alla sorgente del computer per f
 
 # Per ogni anno d'analisi, creo uno stack comprendente tutte le bande, assegnate precedentemente ad un oggetto. 
 
-a17_4 <- rast("17_4.tiff") #red
-a17_3 <- rast("17_3.tiff") #green
-a17_2 <- rast("17_2.tiff") #blue
-a17_8 <- rast("17_8.tiff") #nir
+#Alla fine ho cambiato immagine perchè quezta mi dava problemi con NDVI classificazione:
+#a17_4 <- rast("17_4.tiff") #red
+#a17_3 <- rast("17_3.tiff") #green
+#a17_2 <- rast("17_2.tiff") #blue
+a#17_8 <- rast("17_8.tiff") #nir
+#a17 <- c(a17_4, a17_3, a17_2, a17_8)
+
+a17_4 <- rast("17b_4.tiff") #red
+a17_3 <- rast("17b_3.tiff") #green
+a17_2 <- rast("17b_2.tiff") #blue
+a17_8 <- rast("17b_8.tiff") #nir
 a17 <- c(a17_4, a17_3, a17_2, a17_8)
 
 a19_4 <- rast("19_4.tiff") #red
@@ -64,6 +70,16 @@ im.plotRGB(a17, 4,3,2,title="2017 (nir)")
 im.plotRGB(a19, 4,3,2,title="2019 (nir)")
 im.plotRGB(a24, 4,3,2,title="2024 (nir)")
 ##############àQUI SI METTONO IN ORDINE COSì PERCHè SI FA COSì E BOONE?
+
+#Multiframe confronto tra tc e nir
+par(mfrow=c(2,3))
+im.plotRGB(a17, 1,2,3,title="2017")
+im.plotRGB(a19, 1,2,3,title="2019")
+im.plotRGB(a24, 1,2,3,title="2024")
+im.plotRGB(a17, 4,3,2,title="2017 (nir)")
+im.plotRGB(a19, 4,3,2,title="2019 (nir)")
+im.plotRGB(a24, 4,3,2,title="2024 (nir)")
+
 
 #Chiudo il device precedente:
 dev.off()
@@ -105,7 +121,7 @@ plot(NDVI_2024,col=cl)
 #il range non è in funzione della radiazione radiometrica ma è un valore adimensionale che va da -1 a 1.
 
 dev.off()
-
+#-----------------------
 # Calcolo la differenza in termini di NDVI tra 2017 e 2019 (??????????????????????????):
 NDVI_diff1<-NDVI_2017-NDVI_2019
 plot(NDVI_diff1, col=cl)
@@ -115,7 +131,7 @@ NDVI_diff2<-NDVI_2019-NDVI_2024
 plot(NDVI_diff2, col=cl)
 
 ##### CLASSIFICAZIONE in 2 classi:
-___________________________________________________________________________________???????????????????????????????
+#___________________________________________________________________________________???????????????????????????????
 NDVI_class1<-im.classify(NDVI_diff1,num_clusters = 2)
 plot(NDVI_class1)
 
@@ -125,7 +141,7 @@ plot(NDVI_class2)
 par(mfrow=c(1,2))
 plot(NDVI_class1)
 plot(NDVI_class2)
-____________________________??????????????????????????
+#____________________________??????????????????????????
 ##### Classifico in 2 classi (è giusto il numero di 2 classi o sarebbe meglio 3????): 
 #classe 1 = foresta abbattuta da Vaia o colpita da bostrico, insiedamenti urbani
 #classe 2 = foresta sana e rigogliosa
@@ -158,3 +174,86 @@ prop24 = f24 / tot24 #proporzione
 perc24 = prop24 * 100 #percentuali: classe 1 = 56.15%  classe 2 = 43.85%
 
 #########non sono per niente convinta
+########quindi
+### ##### Classifico in 3 classi: 
+#classe 1 =
+#classe 2 =
+#classe 3 =
+
+class_17 <- im.classify(a17,num_clusters = 3)
+plot(class_17)
+
+class_19 <- im.classify(a19,num_clusters = 3)
+plot(class_19)
+
+class_24 <- im.classify(a24,num_clusters = 3)
+plot(class_24)
+
+######## Classifico con NDVI
+# classe 1 = uomo/neve/ghiaccio
+# classe 2 = foresta/bosco
+# classe 3 = prati/no bosco
+
+c_ndvi17 <- im.classify(NDVI_2017,num_clusters = 3)
+plot(c_ndvi17)
+
+c_ndvi19 <- im.classify(NDVI_2019,num_clusters = 3)
+plot(c_ndvi19)
+
+c_ndvi24 <- im.classify(NDVI_2024,num_clusters = 3)
+plot(c_ndvi24)
+
+#Ora proviamo a calcolare le FREQUENZE (classe 2 dovrebbe essere quella delle foreste):
+
+####ndvi2017
+f_17 <- freq(c_ndvi17) 
+tot_17<-ncell(c_ndvi17) #per conoscere il totale dei pixel:
+prop_17 = f_17 / tot_17 #proporzione
+perc_17 = prop_17 * 100 #percentuali: classe 1 = 9%  classe 2 = 76.1% classe 3 = 14.9%
+
+####ndvi2019
+f_19 <- freq(c_ndvi19) 
+tot_19<-ncell(c_ndvi19) #per conoscere il totale dei pixel:
+prop_19 = f_19 / tot_19 #proporzione
+perc_19 = prop_19 * 100 #percentuali: classe 1 = 6.3%  classe 2 = 75.3% classe 3 = 18.4%
+
+####ndvi2024
+f_24 <- freq(c_ndvi24) 
+tot_24<-ncell(c_ndvi24) #per conoscere il totale dei pixel:
+prop_24 = f_24 / tot_24 #proporzione
+perc_24 = prop_24 * 100 #percentuali: classe 1 = 7.5%  classe 2 = 70.6% classe 3 = 21.9%
+
+#Ottenuti i dati, costruiamo un DATASET, con la funzione data.frame che ci consente di creare delle tabelle:
+class <- c("bosco","uomo/neve/ghiaccio","no bosco")
+y2017 <- c(76.1,9,14.9)
+y2019 <- c(75.3,6.3,18.4)
+y2024 <- c(70.6,7.5,21.9)
+
+tabout <- data.frame(class, y2017, y2019, y2024)
+
+#Per vedere la tabella (attenzione che è case sensitive!):
+View(tabout)
+
+#Realizzo i grafici per i singoli anni:
+ggplot(tabout, aes(x=class, y=y2017, color=class)) + geom_bar(stat="identity",fill="white")
+ggplot(tabout, aes(x=class, y=y2019, color=class)) + geom_bar(stat="identity",fill="white")
+ggplot(tabout, aes(x=class, y=y2024, color=class)) + geom_bar(stat="identity",fill="white")
+
+#Per aggiustare questo, diamo un intervallo di valori per la y con la funzione ylim:
+p1<-ggplot(tabout, aes(x=class, y=y2017, color=class)) + geom_bar(stat="identity",fill="white") + ylim(c(0,100))
+p2<-ggplot(tabout, aes(x=class, y=y2019, color=class)) + geom_bar(stat="identity",fill="white") + ylim(c(0,100))
+p3<-ggplot(tabout, aes(x=class, y=y2024, color=class)) + geom_bar(stat="identity",fill="white") + ylim(c(0,100))
+
+p1 + p2 + p3 #Per vedere il confronto
+#####################################################
+##Altro DATASET:
+anno <- c("2017","2019","2024")
+bosco <- c(76.1,75.3,70.6)
+no_bosco <- c(14.9,18.4,21.9)
+altro <- c(9,6.3,7.5)
+
+tabout2 <- data.frame(anno, bosco, no_bosco, altro)
+
+p1<-ggplot(tabout2, aes(x=anno, y=bosco, color=class)) + geom_bar(stat="identity",fill="white") + ylim(c(0,100))
+p2<-ggplot(tabout2, aes(x=anno, y=no_bosco, color=class)) + geom_bar(stat="identity",fill="white") + ylim(c(0,100))
+p3<-ggplot(tabout2, aes(x=anno, y=altro, color=class)) + geom_bar(stat="identity",f
