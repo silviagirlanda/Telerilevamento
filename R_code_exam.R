@@ -90,7 +90,7 @@ dev.off()
 cl<-colorRampPalette(viridis(7))(100)
 
 NDVI_2017<-(a17[[4]]-a17[[1]])/(a17[[4]]+a17[[1]])
-plot(NDVI_2017,col=cl) #########################################MI VIENE SBAGLIATO L'INTERVALLO
+plot(NDVI_2017,col=cl) #OCCHIO
 
 NDVI_2019<-(a19[[4]]-a19[[1]])/(a19[[4]]+a19[[1]])
 plot(NDVI_2019,col=cl)
