@@ -64,8 +64,8 @@ im.plotRGB(a19, 4,3,2,title="2019 (nir)")
 im.plotRGB(a24, 4,3,2,title="2024 (nir)")
 ##############QUI SI METTONO IN ORDINE COSì PERCHè SI FA COSì E BOONE?
 
-#Faccio  la differenza tra il nir del 2017 e quello del 2024 per vedere la differenza in temrini di salute della vegetazione:
-difnir <- a17 [[4]] - a24[[4]] 
+#Faccio  la differenza tra il nir del 2017 e quello del 2019 per vedere la differenza in temrini di salute della vegetazione dopo la tempesta Vaia:
+difnir <- a17 [[4]] - a19[[4]] 
 # Lo plotto: 
 cdiff<- colorRampPalette(c("red","white","darkslategray")) (100) #valori rossi dove la componente boschiva è cambiata
 plot(difnir,col=cdiff) 
