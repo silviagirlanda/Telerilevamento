@@ -1,0 +1,230 @@
+% al 6/02 ore 15
+\documentclass{beamer} % indica il tipo di file, in questo caso una presentazione
+\usepackage{graphicx} % per inserire immagini
+\usepackage{listings} % pacchetto che può essere utilizzato per caricare degli algoritmi direttamente dagli script.
+\usepackage{multicol} % per visulizzare gli oggetti su 2 colonne
+\usepackage{url} % per inserire pagine web
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+
+\usetheme{Frankfurt}
+\usecolortheme{crane}
+
+\title{\textbf{Analisi vegetazionale della Foresta di Paneveggio (TN)}}
+\subtitle {Come Vaia e il bostrico \textit{Ips typographus} hanno modificato il territorio }
+\author{Silvia Girlanda}
+\date{14 Febbraio 2025}
+
+\begin{document}
+
+\maketitle
+
+\AtBeginSection[] % Do nothing for \section*
+{
+\begin{frame}{Indice}
+\tableofcontents[currentsection]
+\end{frame}
+}
+
+
+\section{Background}
+
+\begin{frame}{\textbf{Dove?}}
+\begin{figure}
+        \centering
+        \includegraphics[width=0.5\linewidth]{Area_indagine.jpg}
+        \caption{\scriptsize Area d'indagine}
+    \end{figure}
+    
+    \begin{itemize}
+        \item Valle del torrente Travignolo
+        \item Vicino al Parco Naturale Paneveggio - Pale di San Martino
+        \item Prevalenza di abete rosso (\textit{Picea abies}) ma anche: abete bianco (\textit{Abies alba}), larice (\textit{Larix decidua}) e pino cembro (\textit{Pinus cembra})
+    
+    \end{itemize}
+ \end{frame}
+
+\begin{frame}{\textbf{Chi?} (1) La tempesta Vaia: 26 - 30 ottobre 2018 }
+14 milioni di alberi abbattuti
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\linewidth]{Vaia.jpeg}
+    \caption{Gli effetti di Vaia}
+    \label{fig:enter-label}
+\end{figure}
+\end{frame}
+
+\begin{frame}{\textbf{Chi?} (2) Il bostrico tipografo}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.40\linewidth]{bostrico.jpeg}
+    \caption{{\textit{Ips typographus}}}
+    \includegraphics[width=0.40\linewidth]{bostrico_2.jpeg}
+    \caption{"Sistema riproduttivo"}
+\end{figure}
+\end{frame}
+
+\begin{frame}{\textbf{Perchè?} }
+
+L'obbiettivo è vedere come l'area indagata si è modificata nel corso del tempo.
+\begin{multicols}{2}
+\begin{itemize}
+    \item 8 agosto 2017 \begin{large} $\rightarrow$ \end{large} prima di Vaia
+    \item 28 giugno 2019 \begin{large} $\rightarrow$ \end{large} dopo Vaia
+    \item 31 luglio 2024 \begin{large} $\rightarrow$ \end{large} effetti del  bostrico
+\end{itemize}
+\columnbreak
+                \begin{center}
+                \begin{figure}
+                    \centering
+                    \includegraphics[width=0.9\linewidth]{bostrico-Vaia.jpg}
+                \end{figure}
+                \end{center}
+\end{multicols}
+\end{frame}
+
+
+\section{Codice e risultati}
+
+        \begin{frame}{Organizzazione del lavoro}
+            \begin{center}
+            Le immagini utilizzate per questo progetto state scaricate dal sito \url{https://browser.dataspace.copernicus.eu} utilizzando i seguenti criteri: \begin{itemize}
+                    \item Sentinel - 2
+                    \item 92.84 km$^{2}$
+                    \item Stagione estiva: 2017, 2019 e 2024
+                    \item Copertura di nuvole inferiore al 20\%
+                    \item Minor copertura di neve
+                    \item Download delle bande 2,3,4 e 8 in formato .TIFF 16 bit
+                \end{itemize}
+            \end{center}
+        \end{frame}
+
+        
+        \begin{frame}{In preparazione...}
+        \texttt{setwd("C:/Telerilevamento")}
+        
+        \bigskip
+        \bigskip
+        Pacchetti utilizzati:
+        \bigskip
+            \begin{itemize}
+                \item    \texttt{library(terra)} %per font Courier
+                \item    \texttt{library(imageRy)} 
+                \item    \texttt{library(viridis)}
+                \item    \texttt{library(ggplot2)} 
+                \item    \texttt{library(patchwork)}
+            \end{itemize}
+        \end{frame}
+
+\begin{frame}{Funzioni utilizzate}
+                \begin{multicols}{2}
+                    \begin{itemize}
+                        \item    \texttt{\textcolor{gray}{setwd()}} 
+                        \item    \texttt{rast()} 
+                        \item    \texttt{c()}
+                        \item    \texttt{par()} 
+                        \item    \texttt{im.plotRGB()}
+                        \item    \texttt{plot()}
+                        \item    \texttt{im.classify()}
+                        \item    \texttt{ncell()}
+                        \item    \texttt{freq()}
+                \columnbreak
+                        \item    \texttt{data.frame()}
+                        \item    \texttt{View()}
+                        \item    \texttt{ggplot()}
+                        \item    \texttt{aes()}
+                        \item    \texttt{geom_boxplot()}
+                        \item    \texttt{ylim()}
+                        \item    \texttt{xlab()}
+                        \item    \texttt{ylab()}
+                        \item    \texttt{ggtitle()}
+                    \end{itemize}
+                \end{multicols}
+ \end{frame}
+ 
+\begin{frame}{Dalle bande all'immagine...}
+ \begin{multicols}{2}
+    \lstinputlisting[language=R, firstline=35, lastline=51, commentstyle=\color{mygreen}, basicstyle=\footnotesize]{R_code_exam.R}
+    \columnbreak
+    \begin{figure}
+        \raggedleft %per posizionare qualcosa a destra della slide
+        \includegraphics[width=0.5\linewidth]{Copernicus_Browser.jpg}
+    \end{figure}
+    \end{multicols}
+\end{frame}
+
+\begin{frame}{True color}
+\lstinputlisting[language=R, firstline=55, lastline=58, commentstyle=\color{mygreen}, basicstyle=\footnotesize]{R_code_exam.R}
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{par_tc.jpeg}
+\end{figure}
+        \end{frame}
+
+\begin{frame}{True Color e False Color (nir su banda del rosso)}
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{par_tc_nir.jpeg}
+\end{figure}
+        \end{frame}
+
+ \begin{frame}{NDVI: Normalized Difference Vegetation Index}
+            \begin{equation}
+                NDVI = \frac{(NIR - RED)}{(NIR + RED)}
+            \end{equation}
+            \begin{figure}
+                \centering
+                \includegraphics[width=0.5\linewidth]{NDVI.jpg}
+            \end{figure}
+        \end{frame}
+
+        
+\begin{frame}{NDVI}
+\lstinputlisting[language=R, firstline=92, lastline=99, commentstyle=\color{mygreen}, basicstyle=\footnotesize]{R_code_exam.R}
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{par_NDVI.jpeg}
+\end{figure}
+ \end{frame}
+
+\section{Conclusioni}
+
+\section{Fonti e altro}
+
+ \begin{frame}{Fonti utilizzate}
+ \begin{multicols}{2}
+ \textbf{BIBLIOGRAFIA}
+ \begin{itemize}
+     \item \textit{Sottocorteccia. Un viaggio tra i boschi che cambiano} di 
+Pietro Lacasella e Luigi Torreggiani - People, 2024
+ \end{itemize}
+\bigskip
+ \textbf{SITOGRAFIA}
+            \begin{itemize}
+                \item \url{https://browser.dataspace.copernicus.eu} \\
+                \item \url{https://en.wikipedia.org/wiki/Main_Page} \\
+                \item \url{https://parcopan.org/} \\
+            \end{itemize}  
+\columnbreak
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\linewidth]{Sottocorteccia.jpeg}
+\end{figure}
+\end{multicols}
+        \end{frame}
+        
+\begin{frame}{Ringraziamenti}
+            \begin{center}
+                {\huge Grazie per l'attenzione!}\\
+                \bigskip
+                \bigskip
+                \bigskip
+                \bigskip
+                \bigskip
+                \bigskip
+                \bigskip
+                \bigskip
+            \end{center}
+        Il mio profilo GitHub: \url{https://github.com/silviagirlanda} \end{frame}
+\end{document}
+
