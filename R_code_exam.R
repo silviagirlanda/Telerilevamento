@@ -110,9 +110,9 @@ plot(NDVI_2024,col=cl)
 dev.off()
 
 ######## CLASSIFICAZIONE con NDVI
-# classe 1 = uomo/neve/ghiaccio
-# classe 2 = foresta/bosco
-# classe 3 = prati/no bosco
+# classe 1 = altro (uomo/neve)
+# classe 2 = bosco
+# classe 3 = no bosco
 
 c_ndvi17 <- im.classify(NDVI_2017,num_clusters = 3)
 plot(c_ndvi17)
