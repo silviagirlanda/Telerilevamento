@@ -1,6 +1,7 @@
 #### FASE PRELIMINARE ####
-{"type":"Polygon","coordinates":[[[11.587418,46.262112],[11.587418,46.331832],[11.742943,46.331832],[11.742943,46.262112],[11.587418,46.262112]]]}
-#Installo i pacchetti necessari dal CRAN con la funzione install.packages(), il pacchetto va inserito tra virgolette:
+# Coordinate salvate dell'area d'indagine {"type":"Polygon","coordinates":[[[11.587418,46.262112],[11.587418,46.331832],[11.742943,46.331832],[11.742943,46.262112],[11.587418,46.262112]]]}
+
+# Installo i pacchetti necessari dal CRAN con la funzione install.packages(), il pacchetto va inserito tra virgolette:
 # install.packages("terra")
 # install.packages("ggplot2")
 # install.packages("patchwork")
@@ -58,6 +59,7 @@ im.plotRGB(a19, 1,2,3,title="2019")
 im.plotRGB(a24, 1,2,3,title="2024")
 
 #Sostitusico il filtro rosso con la componente infrarossa per evidenziare il verde, ossia la copertura forestale: tutto quello che riflette infrarosso diventerà rosso
+
 par(mfrow=c(1,3))
 im.plotRGB(a17, 4,3,2,title="2017 (nir)")
 im.plotRGB(a19, 4,3,2,title="2019 (nir)")
@@ -67,10 +69,10 @@ im.plotRGB(a24, 4,3,2,title="2024 (nir)")
 #Faccio  la differenza tra il nir del 2017 e quello del 2019 per vedere la differenza in temrini di salute della vegetazione dopo la tempesta Vaia:
 difnir <- a17 [[4]] - a19[[4]] 
 # Lo plotto: 
-cdiff<- colorRampPalette(c("red","white","darkslategray")) (100) #valori rossi dove la componente boschiva è cambiata
+cdiff <- colorRampPalette(c("red","white","darkslategray")) (100) #valori rossi dove la componente boschiva è cambiata
 plot(difnir,col=cdiff) 
 
-#Multiframe confronto tra tc e nir
+#Multiframe confronto tra tc e nir:
 par(mfrow=c(2,3))
 im.plotRGB(a17, 1,2,3,title="2017")
 im.plotRGB(a19, 1,2,3,title="2019")
@@ -107,7 +109,7 @@ plot(NDVI_2024,col=cl)
 
 dev.off()
 
-######## Classifico con NDVI
+######## CLASSIFICAZIONE con NDVI
 # classe 1 = uomo/neve/ghiaccio
 # classe 2 = foresta/bosco
 # classe 3 = prati/no bosco
@@ -125,23 +127,23 @@ plot(c_ndvi24)
 
 ####ndvi2017
 f_17 <- freq(c_ndvi17) 
-tot_17<-ncell(c_ndvi17) #per conoscere il totale dei pixel:
+tot_17<-ncell(c_ndvi17) #totale dei pixel:
 prop_17 = f_17 / tot_17 #proporzione
 perc_17 = prop_17 * 100 #percentuali: classe 1 = 9%  classe 2 = 76.1% classe 3 = 14.9%
 
 ####ndvi2019
 f_19 <- freq(c_ndvi19) 
-tot_19<-ncell(c_ndvi19) #per conoscere il totale dei pixel:
+tot_19<-ncell(c_ndvi19) #totale dei pixel:
 prop_19 = f_19 / tot_19 #proporzione
 perc_19 = prop_19 * 100 #percentuali: classe 1 = 6.3%  classe 2 = 75.3% classe 3 = 18.4%
 
 ####ndvi2024
 f_24 <- freq(c_ndvi24) 
-tot_24<-ncell(c_ndvi24) #per conoscere il totale dei pixel:
+tot_24<-ncell(c_ndvi24) #totale dei pixel:
 prop_24 = f_24 / tot_24 #proporzione
 perc_24 = prop_24 * 100 #percentuali: classe 1 = 7.5%  classe 2 = 70.6% classe 3 = 21.9%
 
-##Creo un DATASET con le percentuali ottenute:
+#Creo un DATASET con le percentuali ottenute:
 anno <- c("2017","2019","2024")
 bosco <- c(76.1,75.3,70.6)
 no_bosco <- c(14.9,18.4,21.9)
