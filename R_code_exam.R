@@ -123,7 +123,7 @@ plot(c_ndvi19)
 c_ndvi24 <- im.classify(NDVI_2024,num_clusters = 3)
 plot(c_ndvi24)
 
-#Ora proviamo a calcolare le FREQUENZE (classe 2 dovrebbe essere quella delle foreste):
+#Calcolo poi le FREQUENZE:
 
 ####ndvi2017
 f_17 <- freq(c_ndvi17) 
