@@ -151,9 +151,9 @@ tabout <- data.frame(anno, bosco, no_bosco, altro)
 View(tabout) #per vedere la tabella (attenzione che è case sensitive!):
 
 # Creo dei GRAFICI:
-p1<-ggplot(tabout2, aes(x=anno, y=bosco, color=class)) + geom_bar(stat="identity",fill="white") + ylim(c(0,100))
-p2<-ggplot(tabout2, aes(x=anno, y=no_bosco, color=class)) + geom_bar(stat="identity",fill="white") + ylim(c(0,100))
-p3<-ggplot(tabout2, aes(x=anno, y=altro, color=class)) + geom_bar(stat="identity",fill="white") + ylim(c(0,100))
+p1<-ggplot(tabout, aes(x=anno, y=bosco, color=class)) + geom_bar(stat="identity",fill="white") + ylim(c(0,100))
+p2<-ggplot(tabout, aes(x=anno, y=no_bosco, color=class)) + geom_bar(stat="identity",fill="white") + ylim(c(0,100))
+p3<-ggplot(tabout, aes(x=anno, y=altro, color=class)) + geom_bar(stat="identity",fill="white") + ylim(c(0,100))
 
 p1 + p2 + p3 #Per vedere il confronto
 
