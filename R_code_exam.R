@@ -106,21 +106,6 @@ plot(NDVI_2024,col=cl)
 #il range non è in funzione della radiazione radiometrica ma è un valore adimensionale che va da -1 a 1.
 
 dev.off()
-#-----------------------???????????
-#Creo uno stack con 
-NDVI_stack<-c(NDVI_2017, NDVI_2019, NDVI_2024)
-plot(NDVI_stack, col=cl)
-names(NDVI_stack)<-c("NDVI.2015","NDVI.2023")
-dev.off()
-
-# Calcolo la DIFFERENZA in termini di NDVI tra 2017 e 2024:
-NDVI_diff<-NDVI_2017-NDVI_2024
-plot(NDVI_diff, col=cdiff)
-
-#ora classifico per vedere dove è cambiato e dove no
-NDVI_class<-im.classify(NDVI_diff, 2) 
-plot(NDVI_class)
-dev.off()
 
 ######## Classifico con NDVI
 # classe 1 = uomo/neve/ghiaccio
