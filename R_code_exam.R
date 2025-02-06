@@ -129,19 +129,22 @@ plot(c_ndvi24)
 f_17 <- freq(c_ndvi17) 
 tot_17<-ncell(c_ndvi17) #totale dei pixel:
 prop_17 = f_17 / tot_17 #proporzione
-perc_17 = prop_17 * 100 #percentuali: classe 1 = 9%  classe 2 = 76.1% classe 3 = 14.9%
+perc_17 = prop_17 * 100 #percentuali
+## classe 1 = 9%  classe 2 = 76.1% classe 3 = 14.9%
 
 ####ndvi2019
 f_19 <- freq(c_ndvi19) 
 tot_19<-ncell(c_ndvi19) #totale dei pixel:
 prop_19 = f_19 / tot_19 #proporzione
-perc_19 = prop_19 * 100 #percentuali: classe 1 = 6.3%  classe 2 = 75.3% classe 3 = 18.4%
+perc_19 = prop_19 * 100 #percentuali 
+## classe 1 = 6.3%  classe 2 = 75.3% classe 3 = 18.4%
 
 ####ndvi2024
 f_24 <- freq(c_ndvi24) 
 tot_24<-ncell(c_ndvi24) #totale dei pixel:
 prop_24 = f_24 / tot_24 #proporzione
-perc_24 = prop_24 * 100 #percentuali: classe 1 = 7.5%  classe 2 = 70.6% classe 3 = 21.9%
+perc_24 = prop_24 * 100 #percentuali 
+## classe 1 = 7.5%  classe 2 = 70.6% classe 3 = 21.9%
 
 #Creo un DATASET con le percentuali ottenute:
 anno <- c("2017","2019","2024")
