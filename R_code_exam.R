@@ -207,7 +207,7 @@ plot(sd2017,col=vir)
 plot(sd2019,col=vir)
 plot(sd2024,col=vir)
 
-##ANALISI MULTIVARIATA
+##ANALISI MULTIVARIATA BOHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
 pca2024 <- im.pca(a24)
 tot <-sum(7275.0102 + 3682.7380 + 356.1203 + 184.6525)
 7275.0102 * 100/tot
@@ -218,3 +218,7 @@ tot <-sum(7275.0102 + 3682.7380 + 356.1203 + 184.6525)
 #3.097097
 184.6525 * 100/tot
 # 1.60588
+
+vir <- colorRampPalette(viridis(7))(100)
+
+plot(pca2024, col=vir)
