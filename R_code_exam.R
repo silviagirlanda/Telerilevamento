@@ -161,9 +161,9 @@ p2<-ggplot(tabout, aes(x=anno, y=no_bosco, color=anno)) + geom_bar(stat="identit
 p3<-ggplot(tabout, aes(x=anno, y=altro, color=anno)) + geom_bar(stat="identity",fill="white")
 
 #Al fine di uniformare, do un intervallo di valori per la y con la funzione ylim():
-p1<-ggplot(tabout, aes(x=anno, y=bosco, color=anno)) + geom_bar(stat="identity",fill="white") + ylim(c(0,100))
-p2<-ggplot(tabout, aes(x=anno, y=no_bosco, color=anno)) + geom_bar(stat="identity",fill="white") + ylim(c(0,100))
-p3<-ggplot(tabout, aes(x=anno, y=altro, color=anno)) + geom_bar(stat="identity",fill="white") + ylim(c(0,100))
+p1<-ggplot(tabout, aes(x=anno, y=bosco, color=anno)) + geom_bar(stat="identity",fill="white") + ylim(c(0,100)) + ggtitle("Confronto valori presenza bosco")
+p2<-ggplot(tabout, aes(x=anno, y=no_bosco, color=anno)) + geom_bar(stat="identity",fill="white") + ylim(c(0,100)) + ggtitle("Confronto valori assenza bosco")
+p3<-ggplot(tabout, aes(x=anno, y=altro, color=anno)) + geom_bar(stat="identity",fill="white") + ylim(c(0,100)) + ggtitle("Confronto valori altro")
 
 p1 + p2 + p3 #Per vedere il confronto
 
