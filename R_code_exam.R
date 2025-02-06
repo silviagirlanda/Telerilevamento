@@ -148,6 +148,7 @@ no_bosco <- c(14.9,18.4,21.9)
 altro <- c(9,6.3,7.5)
 
 tabout <- data.frame(anno, bosco, no_bosco, altro)
+View(tabout) #per vedere la tabella (attenzione che è case sensitive!):
 
 # Creo dei GRAFICI:
 p1<-ggplot(tabout2, aes(x=anno, y=bosco, color=class)) + geom_bar(stat="identity",fill="white") + ylim(c(0,100))
