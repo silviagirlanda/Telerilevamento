@@ -169,6 +169,7 @@ p1 + p2 + p3 #Per vedere il confronto
 
 # MISURA della VARIABILITA':
 clsd<- colorRampPalette(c("yellow","darkslategray")) (100)
+vir <- colorRampPalette(viridis(7))(100)
 #------------2017
 nir <- a17[[4]]
 plot(nir)
@@ -182,7 +183,7 @@ focal(nir, matrix (1/9, 3, 3), fun=sd)
 
 #Rinominiamo l'oggetto:
 sd2017 <- focal(nir, matrix (1/9, 3, 3), fun=sd)
-plot(sd2017,col=clsd)
+plot(sd2017,col=vir)
 
 #-----------2019
 nir2 <- a19[[4]]
@@ -190,7 +191,7 @@ plot(nir)
 focal(nir2, matrix (1/9, 3, 3), fun=sd)
 #Rinominiamo l'oggetto:
 sd2019 <- focal(nir2, matrix (1/9, 3, 3), fun=sd)
-plot(sd2019,col=clsd)
+plot(sd2019,col=vir)
 
 #------------2024
 nir3 <- a24[[4]]
@@ -198,14 +199,13 @@ plot(nir3)
 focal(nir3, matrix (1/9, 3, 3), fun=sd)
 #Rinominiamo l'oggetto:
 sd2024 <- focal(nir3, matrix (1/9, 3, 3), fun=sd)
-plot(sd2024,col=clsd)
+plot(sd2024,col=vir)
 
 #Ora creaiamo un mutliframe:
-clsd<- colorRampPalette(c("yellow","darkslategray")) (100)
 par(mfrow=c(1,3))
-plot(sd2017,col=clsd)
-plot(sd2019,col=clsd)
-plot(sd2024,col=clsd)
+plot(sd2017,col=vir)
+plot(sd2019,col=vir)
+plot(sd2024,col=vir)
 
 ##ANALISI MULTIVARIATA
 pca2024 <- im.pca(a24)
