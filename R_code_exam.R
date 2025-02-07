@@ -210,6 +210,21 @@ plot(sd2017,col=vir)
 plot(sd2019,col=vir)
 plot(sd2024,col=vir)
 
+# Calcolo la CORRELAZIONE che vi è tra le bande grazie alla funzione "pairs":
+# Tra le bande blu, verde e rosso c'è un'alta correlazione (0.97/0.98 in un range che va da -1 (correlazione negativa) a 1(correlazione positiva))
+# Le immagini in diagonale e in verde mostrano le correlazioni tra le bande. Rosso, Verde e Blu sono correlate tra loro, il NIR ha una correlazione minore con le altre bande, un po'maggiore con il verde.
+#Creo uno stacksent al fine di unire le varie immagini delle singole bande:
+stack17 <- c(a17[[1]], a17[[2]], a17[[3]],a17[[4]]) 
+pairs(stack17) 
+
+#Facciamo la stessa cosa per il 2019: 0.95/0.97 tra le bande blu, verde e rosso; nir correllazione più bassa, un po'maggiore con il verde.
+stack19<-c(a19[[1]],a19[[2]],a19[[3]],a19[[4]])
+pairs(stack19)
+
+#E per il 2024: 0.94/0.97 tra le bande blu, verde e rosso; nir correllazione più bassa, un po'maggiore con il verde.
+stack24<-c(a24[[1]],a24[[2]],a24[[3]],a24[[4]])
+pairs(stack24)
+
 ##ANALISI MULTIVARIATA BOHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
 pca2024 <- im.pca(a24)
 tot <-sum(7275.0102 + 3682.7380 + 356.1203 + 184.6525)
