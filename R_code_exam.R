@@ -16,11 +16,11 @@
 library(terra) # Per la funzione rast()
 library(imageRy) # Per im.plotRGB() e im.classify()
 library(viridis) # Per utilizzare colorRampPalette adatte a chi soffre di deuteranomalia (daltonismo)
-library(ggplot2) # Per la creazione dei boxplot
-library(patchwork) # Per visualizzare i boxplot insieme
+library(ggplot2) # Per la creazione dei grafici
+library(patchwork) # Per la visualizzazione di più grafici assieme
 
 
-# Imposto la cartella di lavoro, dove sono state posizionate le immagini relative alla zona di Predazzo e vicina alla Foresta di Paneveggio (avendo cura di sostiuire i backslash con gli slash).
+# Imposto la cartella di lavoro, dove sono state posizionate le immagini relative alla zona di Predazzo e vicina alla Foresta di Paneveggio (avendo cura di sostiuire i backslash con gli slash): da questa work directory, R prenderà i dati utilizzati durante quest'analisi.
 # Il seguente codice ha l'obiettivo di evidenziare i cambiamenti nei termini di copertura forestale a seguito della tempesta Vaia del 2018 e della conseguente diffusione epidemica del bostrico (Ips typographus),
 # mettendo a confronto l'estate del 2017 (pre Vaia), l'estate del 2019 (post Vaia) e l'estate del 2024. L'area analizzata ricopre circa 93 km2.
 setwd("C:/Telerilevamento") #posizionata vicino alla sorgente del computer per facilitare i percorsi
@@ -84,7 +84,7 @@ im.plotRGB(a24, 4,3,2,title="2024 (nir)")
 #Chiudo il device precedente:
 dev.off()
 
-##### NDVI #####
+######## NDVI
 # Calcolo l'NDVI (Normalized Difference Vegetation Index), utilizzato se le immagini hanno bit differenti ed è quindi necessaria una normalizzazione.
 # NDVI = NIR-RED/NIR+RED
 
@@ -109,7 +109,7 @@ plot(NDVI_2024,col=cl)
 
 dev.off()
 
-######## CLASSIFICAZIONE con NDVI
+######## CLASSIFICAZIONE dell'NDVI in 3 cluster:
 # classe 1 = altro (uomo/neve)
 # classe 2 = bosco
 # classe 3 = no bosco
@@ -123,30 +123,30 @@ plot(c_ndvi19)
 c_ndvi24 <- im.classify(NDVI_2024,num_clusters = 3)
 plot(c_ndvi24)
 
-#Calcolo poi le FREQUENZE:
+#Calcolo poi le FREQUENZE dei pixel presenti in ciascuna delle 3 classi:
 
-####ndvi2017
+##ndvi2017
 f_17 <- freq(c_ndvi17) 
 tot_17<-ncell(c_ndvi17) #totale dei pixel:
 prop_17 = f_17 / tot_17 #proporzione
 perc_17 = prop_17 * 100 #percentuali
 ## classe 1 = 9%  classe 2 = 76.1% classe 3 = 14.9%
 
-####ndvi2019
+##ndvi2019
 f_19 <- freq(c_ndvi19) 
 tot_19<-ncell(c_ndvi19) #totale dei pixel:
 prop_19 = f_19 / tot_19 #proporzione
 perc_19 = prop_19 * 100 #percentuali 
 ## classe 1 = 6.3%  classe 2 = 75.3% classe 3 = 18.4%
 
-####ndvi2024
+##ndvi2024
 f_24 <- freq(c_ndvi24) 
 tot_24<-ncell(c_ndvi24) #totale dei pixel:
 prop_24 = f_24 / tot_24 #proporzione
 perc_24 = prop_24 * 100 #percentuali 
 ## classe 1 = 7.5%  classe 2 = 70.6% classe 3 = 21.9%
 
-#Creo un DATASET con le percentuali ottenute:
+#Creo un DATASET con le percentuali ottenute, al fine di confrontare come variano le frequenze nel corso del tempo:
 anno <- c("2017","2019","2024")
 bosco <- c(76.1,75.3,70.6)
 no_bosco <- c(14.9,18.4,21.9)
@@ -165,9 +165,12 @@ p1<-ggplot(tabout, aes(x=anno, y=bosco, color=anno)) + geom_bar(stat="identity",
 p2<-ggplot(tabout, aes(x=anno, y=no_bosco, color=anno)) + geom_bar(stat="identity",fill="white") + ylim(c(0,100)) + ggtitle("Confronto valori assenza bosco")
 p3<-ggplot(tabout, aes(x=anno, y=altro, color=anno)) + geom_bar(stat="identity",fill="white") + ylim(c(0,100)) + ggtitle("Confronto valori altro")
 
-p1 + p2 + p3 #Per vedere il confronto
+p1 + p2 # uniamo assieme i grafici grazie alla funzione patchwork per vedere il confronto
 
-# MISURA della VARIABILITA':
+#Chiudo il device precedente:
+dev.off()
+
+# MISURA della VARIABILITA': calcolo della deviazione standard sulla banda del nir
 clsd<- colorRampPalette(c("yellow","darkslategray")) (100)
 vir <- colorRampPalette(viridis(7))(100)
 #------------2017
