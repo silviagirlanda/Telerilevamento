@@ -173,10 +173,10 @@ dev.off()
 # MISURA della VARIABILITA': calcolo della deviazione standard sulla banda del nir
 clsd<- colorRampPalette(c("yellow","darkslategray")) (100)
 vir <- colorRampPalette(viridis(7))(100)
-#------------201
+
+#------------2017
 nir <- a17[[4]]
 plot(nir)
-
 #Useremo la nuova funzione "focal" che permette di estarre valori focali, ossia statistiche, in un gruppo di valori: qui la dev standard.
 focal(nir, matrix (1/9, 3, 3), fun=sd)
 # nir è l'immagine usata
