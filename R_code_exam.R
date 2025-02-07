@@ -173,7 +173,7 @@ dev.off()
 # MISURA della VARIABILITA': calcolo della deviazione standard sulla banda del nir
 clsd<- colorRampPalette(c("yellow","darkslategray")) (100)
 vir <- colorRampPalette(viridis(7))(100)
-#------------2017
+#------------201
 nir <- a17[[4]]
 plot(nir)
 
@@ -204,7 +204,7 @@ focal(nir3, matrix (1/9, 3, 3), fun=sd)
 sd2024 <- focal(nir3, matrix (1/9, 3, 3), fun=sd)
 plot(sd2024,col=vir)
 
-#Ora creaiamo un mutliframe:
+#Ora creaiamo un multiframe:
 par(mfrow=c(1,3))
 plot(sd2017,col=vir)
 plot(sd2019,col=vir)
