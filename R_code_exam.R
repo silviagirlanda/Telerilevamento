@@ -231,38 +231,62 @@ pairs(stack24)
 pca2017 <- im.pca(a17)
 tot <-sum(6310.0534, 3586.9227, 293.7204, 195.3784)
 6310.0534 * 100/tot
-# 59.9855
+# 59.9855 = PC1
 3586.9227 * 100/tot
-# 34.0985
+# 34.0985 = PC2
 293.7204 * 100/tot
-# 2.792205
+# 2.792205 = PC3
 195.3784 * 100/tot
-# 1.857333
+# 1.857333 = PC4
 
 #2019
 pca2019 <- im.pca(a19)
 tot <-sum(7284.0308, 3885.2596, 367.9752, 264.5466)
 7284.0308 * 100/tot
-# 69.24446
+# 69.24446 = PC1
 3885.2596 * 100/tot
-# 36.93459
+# 36.93459 = PC2
 367.9752 * 100/tot
-# 3.498097
+# 3.498097 = PC3
 264.5466 * 100/tot
-# 2.514869
+# 2.514869 = PC4
 
 #2024
 pca2024 <- im.pca(a24)
 tot <-sum(6783.2525, 3171.9157, 355.7192, 208.4101)
 6783.2525 * 100/tot
-# 64.48389
+# 64.48389 = PC1
 3171.9157 * 100/tot
-# 30.1533
+# 30.1533 = PC2
 355.7192 * 100/tot
-# 3.381587
+# 3.381587 = PC3
 208.4101 * 100/tot
-# 1.981217
+# 1.981217 = PC4
 
-vir <- colorRampPalette(viridis(7))(100)
+#Uso la tecnica della moving window sulla PC1 essendo la più rappresentativa, al posto di calcolarla su una banda a nostra scelta.
 
-plot(pca2024, col=vir)
+#2017
+pc17<-pca2017$PC1
+pc17.sd<-focal(pc17, matrix(1/9, 3, 3), fun=sd)
+plot(pc17.sd, col=viridis(100))
+
+#2019
+pc19<-pca2019$PC1
+pc19.sd<-focal(pc19, matrix(1/9, 3, 3), fun=sd)
+plot(pc19.sd, col=viridis(100))
+
+#2024
+pc24<-pca2024$PC1
+pc24.sd<-focal(pc24, matrix(1/9, 3, 3), fun=sd)
+plot(pc24.sd, col=viridis(100))
+
+#Creo un multiframe per metterli a confronto:
+par(mfrow=c(2,3))
+plot(sd2017)
+plot(sd2019)
+plot(sd2024)
+plot(pc17.sd)
+plot(pc19.sd)
+plot(pc24.sd)
+
+# La differenza tra la deviazione standard calcolata sulla banda NIR e quella calcolata sul PC1 non è così evidente.
