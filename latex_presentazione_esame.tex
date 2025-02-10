@@ -10,7 +10,7 @@
 \usecolortheme{crane}
 
 \title{\textbf{Analisi vegetazionale della Foresta di Paneveggio (TN)}}
-\subtitle {Come Vaia e il bostrico \textit{Ips typographus} hanno modificato il territorio }
+\subtitle {Come la tempesta Vaia e il bostrico,\textit{Ips typographus}, hanno modificato il territorio }
 \author{Silvia Girlanda}
 \date{14 Febbraio 2025}
 
@@ -28,7 +28,7 @@
 
 \section{Background}
 
-\begin{frame}{\textbf{Dove?}}
+\begin{frame}{Dove?}
 \begin{figure}
         \centering
         \includegraphics[width=0.5\linewidth]{Area_indagine.jpg}
@@ -49,7 +49,6 @@
     \centering
     \includegraphics[width=0.9\linewidth]{Vaia.jpeg}
     \caption{Gli effetti di Vaia}
-    \label{fig:enter-label}
 \end{figure}
 \end{frame}
 
@@ -63,7 +62,7 @@
 \end{figure}
 \end{frame}
 
-\begin{frame}{\textbf{Perchè?} }
+\begin{frame}{Perchè?}
 
 L'obbiettivo è vedere come l'area indagata si è modificata nel corso del tempo.
 \begin{multicols}{2}
@@ -126,14 +125,17 @@ L'obbiettivo è vedere come l'area indagata si è modificata nel corso del tempo
                         \item    \texttt{plot()}
                         \item    \texttt{im.classify()}
                         \item    \texttt{freq()}
-                \columnbreak
                         \item    \texttt{data.frame()}
+                \columnbreak
                         \item    \texttt{View()}
                         \item    \texttt{ggplot()}
                         \item    \texttt{aes()}
                         \item    \texttt{geom$_$bar()}
                         \item    \texttt{ylim()}
                         \item    \texttt{ggtitle()}
+                        \item    \texttt{focal()}
+                        \item    \texttt{pairs()}
+                        \item    \texttt{im.pca()}
                     \end{itemize}
                 \end{multicols}
  \end{frame}
@@ -172,7 +174,7 @@ L'obbiettivo è vedere come l'area indagata si è modificata nel corso del tempo
     \end{figure}
 \end{frame}
 
- \begin{frame}{NDVI: Normalized Difference Vegetation Index}
+ \begin{frame}{\textbf{NDVI}: Normalized Difference Vegetation Index}
             \begin{equation}
                 NDVI = \frac{(NIR - RED)}{(NIR + RED)}
             \end{equation}
@@ -208,7 +210,7 @@ L'obbiettivo è vedere come l'area indagata si è modificata nel corso del tempo
 \end{frame}
 
 \begin{frame}{Creazione di grafici}
-Utilizzo della funzione \texttt{ggplot()}
+Grazie alla funzione \texttt{ggplot()}
 \\
 \\
     \begin{figure}
@@ -217,7 +219,7 @@ Utilizzo della funzione \texttt{ggplot()}
     \end{figure}
 \end{frame}
 
-\begin{frame}{Misura della variabilità}
+\begin{frame}{Misura della variabilità (1)}
 Grazie alla tecnica della \textit{moving window}, con una finestra di 3x3 pixel, calcoliamo
 la deviazione standard sulla banda del NIR.
 \bigskip
@@ -232,8 +234,9 @@ la deviazione standard sulla banda del NIR.
     \lstinputlisting[language=R, firstline=217, lastline=218, commentstyle=\color{mygreen}, basicstyle=\footnotesize]{R_code_exam.R}
     \begin{figure}
         \centering
-        \includegraphics[width=0.7\linewidth]{pairs_a17.jpeg}
+        \includegraphics[width=0.6\linewidth]{pairs_a17.jpeg}
     \end{figure}
+    E ripeto per gli altri anni...
 \end{frame}
 
 \begin{frame}{Analisi multivariata}
@@ -242,7 +245,7 @@ la deviazione standard sulla banda del NIR.
     La PC1 è risultata, inoltre, pari a: 69.24446 per il 2019 e 64.48389 per il 2024.
     \end{frame}
 
-\begin{frame}{Misura della variabilità(2)}
+\begin{frame}{Misura della variabilità (2)}
     Dopo aver usato la tecnica della \textit{moving window} sulla PC1, essendo la più rappresentativa, realizzo un multiframe: prima riga sul nir; seconda riga sulla PC1.
     \begin{figure}
         \centering
