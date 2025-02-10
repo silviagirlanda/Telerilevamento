@@ -66,10 +66,10 @@ im.plotRGB(a19, 4,3,2,title="2019 (nir)")
 im.plotRGB(a24, 4,3,2,title="2024 (nir)")
 ##############QUI SI METTONO IN ORDINE COSì PERCHè SI FA COSì E BOONE?
 
-#Faccio  la differenza tra il nir del 2017 e quello del 2019 per vedere la differenza in temrini di salute della vegetazione dopo la tempesta Vaia:
-difnir <- a17 [[4]] - a19[[4]] 
+#Faccio  la differenza tra il nir del 2017 e quello del 2024 per vedere la differenza in termini di salute della vegetazione dopo la tempesta Vaia e la maggior diffusione del bostrico:
+difnir <- a17 [[4]] - a24[[4]] 
 # Lo plotto: 
-cdiff <- colorRampPalette(c("red","white","darkslategray")) (100) #valori rossi dove la componente boschiva è cambiata
+cdiff <- colorRampPalette(c("red","white","darkslategray")) (100) #colore rosso evidenzia dove la componente boschiva è cambiata
 plot(difnir,col=cdiff) 
 
 #Multiframe confronto tra tc e nir:
@@ -89,15 +89,15 @@ dev.off()
 # NDVI = NIR-RED/NIR+RED
 
 # Prima seleziono una scala di colori dal pacchetto viridis, inclusivo per le persone che soffrono di daltonismo.
-cl<-colorRampPalette(viridis(7))(100)
+cl <- colorRampPalette(viridis(7))(100)
 
-NDVI_2017<-(a17[[4]]-a17[[1]])/(a17[[4]]+a17[[1]])
+NDVI_2017 <- (a17[[4]]-a17[[1]])/(a17[[4]]+a17[[1]])
 plot(NDVI_2017,col=cl) #OCCHIO
 
-NDVI_2019<-(a19[[4]]-a19[[1]])/(a19[[4]]+a19[[1]])
+NDVI_2019 <- (a19[[4]]-a19[[1]])/(a19[[4]]+a19[[1]])
 plot(NDVI_2019,col=cl)
 
-NDVI_2024<-(a24[[4]]-a24[[1]])/(a24[[4]]+a24[[1]])
+NDVI_2024 <- (a24[[4]]-a24[[1]])/(a24[[4]]+a24[[1]])
 plot(NDVI_2024,col=cl)
 
 # Creo un multiframe e plotto le immagini insieme:
@@ -152,7 +152,7 @@ bosco <- c(76.1,75.3,70.6)
 no_bosco <- c(14.9,18.4,21.9)
 altro <- c(9,6.3,7.5)
 
-tabout <- data.frame(anno, bosco, no_bosco, altro)
+tabout <- data.frame(anno, bosco, no_bosco, altro) #inserimento dei dati ottenuti all'interno di un dataframe
 View(tabout) #per vedere la tabella (attenzione che è case sensitive!):
 
 #Realizzo i grafici per i singoli anni:
@@ -225,7 +225,7 @@ pairs(stack19)
 stack24<-c(a24[[1]],a24[[2]],a24[[3]],a24[[4]])
 pairs(stack24)
 
-##ANALISI MULTIVARIATA BOHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+###ANALISI MULTIVARIATA
 
 #2017
 pca2017 <- im.pca(a17)
