@@ -226,6 +226,7 @@ stack24<-c(a24[[1]],a24[[2]],a24[[3]],a24[[4]])
 pairs(stack24)
 
 ###ANALISI MULTIVARIATA
+#
 
 #2017
 pca2017 <- im.pca(a17)
@@ -262,6 +263,7 @@ tot <-sum(6783.2525, 3171.9157, 355.7192, 208.4101)
 # 3.381587 = PC3
 208.4101 * 100/tot
 # 1.981217 = PC4
+
 
 #Uso la tecnica della moving window sulla PC1 essendo la più rappresentativa, al posto di calcolarla su una banda a nostra scelta.
 
