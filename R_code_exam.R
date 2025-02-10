@@ -213,7 +213,7 @@ plot(sd2024,col=vir)
 # Calcolo la CORRELAZIONE che vi è tra le bande grazie alla funzione "pairs":
 # Tra le bande blu, verde e rosso c'è un'alta correlazione (0.97/0.98 in un range che va da -1 (correlazione negativa) a 1(correlazione positiva))
 # Le immagini in diagonale e in verde mostrano le correlazioni tra le bande. Rosso, Verde e Blu sono correlate tra loro, il NIR ha una correlazione minore con le altre bande, un po'maggiore con il verde.
-#Creo uno stacksent al fine di unire le varie immagini delle singole bande:
+#Creo uno stacksent al fine di unire le varie immagini delle singole bande, creando così un'immagine multispettrale (è lo stesso che ho fatto all'inizio):
 stack17 <- c(a17[[1]], a17[[2]], a17[[3]],a17[[4]]) 
 pairs(stack17) 
 
