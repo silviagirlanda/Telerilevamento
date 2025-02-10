@@ -1,4 +1,3 @@
-% al 6/02 ore 15
 \documentclass{beamer} % indica il tipo di file, in questo caso una presentazione
 \usepackage{graphicx} % per inserire immagini
 \usepackage{listings} % pacchetto che può essere utilizzato per caricare degli algoritmi direttamente dagli script.
@@ -126,17 +125,14 @@ L'obbiettivo è vedere come l'area indagata si è modificata nel corso del tempo
                         \item    \texttt{im.plotRGB()}
                         \item    \texttt{plot()}
                         \item    \texttt{im.classify()}
-                        \item    \texttt{ncell()}
                         \item    \texttt{freq()}
                 \columnbreak
                         \item    \texttt{data.frame()}
                         \item    \texttt{View()}
                         \item    \texttt{ggplot()}
                         \item    \texttt{aes()}
-                        \item    \texttt{geom_boxplot()}
+                        \item    \texttt{geom$_$bar()}
                         \item    \texttt{ylim()}
-                        \item    \texttt{xlab()}
-                        \item    \texttt{ylab()}
                         \item    \texttt{ggtitle()}
                     \end{itemize}
                 \end{multicols}
@@ -144,7 +140,7 @@ L'obbiettivo è vedere come l'area indagata si è modificata nel corso del tempo
  
 \begin{frame}{Dalle bande all'immagine...}
  \begin{multicols}{2}
-    \lstinputlisting[language=R, firstline=35, lastline=51, commentstyle=\color{mygreen}, basicstyle=\footnotesize]{R_code_exam.R}
+    \lstinputlisting[language=R, firstline=36, lastline=52, commentstyle=\color{mygreen}, basicstyle=\footnotesize]{R_code_exam.R}
     \columnbreak
     \begin{figure}
         \raggedleft %per posizionare qualcosa a destra della slide
@@ -154,11 +150,11 @@ L'obbiettivo è vedere come l'area indagata si è modificata nel corso del tempo
 \end{frame}
 
 \begin{frame}{True color}
-\lstinputlisting[language=R, firstline=55, lastline=58, commentstyle=\color{mygreen}, basicstyle=\footnotesize]{R_code_exam.R}
+\lstinputlisting[language=R, firstline=56, lastline=59, commentstyle=\color{mygreen}, basicstyle=\footnotesize]{R_code_exam.R}
 \begin{figure}
     \centering
     \includegraphics[width=1\linewidth]{par_tc.jpeg}
-\end{figure}
+        \end{figure}
         \end{frame}
 
 \begin{frame}{True Color e False Color (nir su banda del rosso)}
@@ -169,7 +165,7 @@ L'obbiettivo è vedere come l'area indagata si è modificata nel corso del tempo
         \end{frame}
 
 \begin{frame}{Differenza nel nir tra 2017 e 2024}
-\lstinputlisting[language=R, firstline=68, lastline=68, commentstyle=\color{mygreen}, basicstyle=\footnotesize]{R_code_exam.R}
+\lstinputlisting[language=R, firstline=70, lastline=70, commentstyle=\color{mygreen}, basicstyle=\footnotesize]{R_code_exam.R}
     \begin{figure}
         \centering
         \includegraphics[width=0.9\linewidth]{plot_difnir.jpeg}
@@ -188,12 +184,71 @@ L'obbiettivo è vedere come l'area indagata si è modificata nel corso del tempo
 
         
 \begin{frame}{NDVI}
-\lstinputlisting[language=R, firstline=92, lastline=99, commentstyle=\color{mygreen}, basicstyle=\footnotesize]{R_code_exam.R}
+\lstinputlisting[language=R, firstline=92, lastline=101, commentstyle=\color{mygreen}, basicstyle=\footnotesize]{R_code_exam.R}
 \begin{figure}
     \centering
     \includegraphics[width=1\linewidth]{par_NDVI.jpeg}
 \end{figure}
  \end{frame}
+ 
+\begin{frame}{Classificazione NDVI}
+   \lstinputlisting[language=R, firstline=113, lastline=124, commentstyle=\color{mygreen}, basicstyle=\footnotesize]{R_code_exam.R} 
+\end{frame}
+
+\begin{frame}{Calcolo delle frequenze}
+    \lstinputlisting[language=R, firstline=128, lastline=147, commentstyle=\color{mygreen}, basicstyle=\scriptsize]{R_code_exam.R} 
+\end{frame}
+
+\begin{frame}{Realizzazione di un dataset}
+    \lstinputlisting[language=R, firstline=150, lastline=155, commentstyle=\color{mygreen}, basicstyle=\footnotesize]{R_code_exam.R} 
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.7\linewidth]{tabout.jpg}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Creazione di grafici}
+Utilizzo della funzione \texttt{ggplot()}
+\\
+\\
+    \begin{figure}
+        \centering
+        \includegraphics[width=1\linewidth]{grafici_titoli.jpeg}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Misura della variabilità}
+Grazie alla tecnica della \textit{moving window}, con una finestra di 3x3 pixel, calcoliamo
+la deviazione standard sulla banda del NIR.
+\bigskip
+    \lstinputlisting[language=R, firstline=192, lastline=197, commentstyle=\color{mygreen}, basicstyle=\footnotesize]{R_code_exam.R}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.9\linewidth]{focal_nir.jpeg}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Calcolo della correlazione: la funzione \texttt{pairs()} }
+    \lstinputlisting[language=R, firstline=217, lastline=218, commentstyle=\color{mygreen}, basicstyle=\footnotesize]{R_code_exam.R}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.7\linewidth]{pairs_a17.jpeg}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Analisi multivariata}
+    \lstinputlisting[language=R, firstline=232, lastline=241, commentstyle=\color{mygreen}, basicstyle=\footnotesize]{R_code_exam.R}
+    \bigskip
+    La PC1 è risultata, inoltre, pari a: 69.24446 per il 2019 e 64.48389 per il 2024.
+    \end{frame}
+
+\begin{frame}{Misura della variabilità(2)}
+    Uso la tecnica della moving window sulla PC1 essendo la più rappresentativa.
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.9\linewidth]{focal_nir_PC1.jpeg}
+    \end{figure}
+\end{frame}
 
 \section{Conclusioni}
 
@@ -235,5 +290,4 @@ Pietro Lacasella e Luigi Torreggiani - People, 2024
             \end{center}
         Il mio profilo GitHub: \url{https://github.com/silviagirlanda} \end{frame}
 \end{document}
-
 
