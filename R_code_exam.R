@@ -13,7 +13,7 @@
 # devtools::install_github("duccioroccchini/imageRy") #i due punti ripetuti indicano che install_github è funzione del pacchetto devtools
 
 # Richiamo i pacchetti necessari, senza la necessità di usare le virgolette in quanto già presenti in R:
-library(terra) # Per la funzione rast()
+library(terra) # Per la funzione rast() e per focal()
 library(imageRy) # Per im.plotRGB() e im.classify()
 library(viridis) # Per utilizzare colorRampPalette adatte a chi soffre di deuteranomalia (daltonismo)
 library(ggplot2) # Per la creazione dei grafici
