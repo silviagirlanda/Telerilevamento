@@ -157,6 +157,7 @@ anno <- c("2017","2019","2024")
 bosco <- c(76.1,75.3,70.6)
 no_bosco <- c(14.9,18.4,21.9)
 altro <- c(9,6.3,7.5)
+
 #Inserisco i dati ottenuti all'interno di un dataframe:
 tabout <- data.frame(anno, bosco, no_bosco, altro) 
 View(tabout) #per vedere la tabella (attenzione che è case sensitive!):
