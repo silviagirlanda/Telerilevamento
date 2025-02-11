@@ -142,7 +142,7 @@ L'obbiettivo è vedere come l'area indagata si è modificata nel corso del tempo
  
 \begin{frame}{Dalle bande all'immagine...}
  \begin{multicols}{2}
-    \lstinputlisting[language=R, firstline=36, lastline=52, commentstyle=\color{mygreen}, basicstyle=\footnotesize]{R_code_exam.R}
+    \lstinputlisting[language=R, firstline=39, lastline=55, commentstyle=\color{mygreen}, basicstyle=\footnotesize]{R_code_exam.R}
     \columnbreak
     \begin{figure}
         \raggedleft %per posizionare qualcosa a destra della slide
@@ -152,7 +152,7 @@ L'obbiettivo è vedere come l'area indagata si è modificata nel corso del tempo
 \end{frame}
 
 \begin{frame}{True color}
-\lstinputlisting[language=R, firstline=56, lastline=59, commentstyle=\color{mygreen}, basicstyle=\footnotesize]{R_code_exam.R}
+\lstinputlisting[language=R, firstline=60, lastline=63, commentstyle=\color{mygreen}, basicstyle=\footnotesize]{R_code_exam.R}
 \begin{figure}
     \centering
     \includegraphics[width=1\linewidth]{par_tc.jpeg}
@@ -167,7 +167,7 @@ L'obbiettivo è vedere come l'area indagata si è modificata nel corso del tempo
         \end{frame}
 
 \begin{frame}{Differenza nel nir tra 2017 e 2024}
-\lstinputlisting[language=R, firstline=70, lastline=70, commentstyle=\color{mygreen}, basicstyle=\footnotesize]{R_code_exam.R}
+\lstinputlisting[language=R, firstline=76, lastline=76, commentstyle=\color{mygreen}, basicstyle=\footnotesize]{R_code_exam.R}
     \begin{figure}
         \centering
         \includegraphics[width=0.9\linewidth]{plot_difnir.jpeg}
@@ -186,7 +186,7 @@ L'obbiettivo è vedere come l'area indagata si è modificata nel corso del tempo
 
         
 \begin{frame}{NDVI}
-\lstinputlisting[language=R, firstline=92, lastline=101, commentstyle=\color{mygreen}, basicstyle=\footnotesize]{R_code_exam.R}
+\lstinputlisting[language=R, firstline=98, lastline=107, commentstyle=\color{mygreen}, basicstyle=\footnotesize]{R_code_exam.R}
 \begin{figure}
     \centering
     \includegraphics[width=1\linewidth]{par_NDVI.jpeg}
@@ -194,15 +194,16 @@ L'obbiettivo è vedere come l'area indagata si è modificata nel corso del tempo
  \end{frame}
  
 \begin{frame}{Classificazione NDVI}
-   \lstinputlisting[language=R, firstline=113, lastline=124, commentstyle=\color{mygreen}, basicstyle=\footnotesize]{R_code_exam.R} 
+   \lstinputlisting[language=R, firstline=119, lastline=130, commentstyle=\color{mygreen}, basicstyle=\footnotesize]{R_code_exam.R} 
 \end{frame}
 
 \begin{frame}{Calcolo delle frequenze}
-    \lstinputlisting[language=R, firstline=128, lastline=147, commentstyle=\color{mygreen}, basicstyle=\scriptsize]{R_code_exam.R} 
+    \lstinputlisting[language=R, firstline=134, lastline=153, commentstyle=\color{mygreen}, basicstyle=\scriptsize]{R_code_exam.R} 
 \end{frame}
 
 \begin{frame}{Realizzazione di un dataset}
-    \lstinputlisting[language=R, firstline=150, lastline=155, commentstyle=\color{mygreen}, basicstyle=\footnotesize]{R_code_exam.R} 
+    \lstinputlisting[language=R, firstline=156, lastline=159, commentstyle=\color{mygreen}, basicstyle=\footnotesize]{R_code_exam.R} 
+    \lstinputlisting[language=R, firstline=162, lastline=162, commentstyle=\color{mygreen}, basicstyle=\footnotesize]{R_code_exam.R} 
     \begin{figure}
         \centering
         \includegraphics[width=0.7\linewidth]{tabout.jpg}
@@ -223,7 +224,7 @@ Grazie alla funzione \texttt{ggplot()}
 Grazie alla tecnica della \textit{moving window}, con una finestra di 3x3 pixel, calcoliamo
 la deviazione standard sulla banda del NIR.
 \bigskip
-    \lstinputlisting[language=R, firstline=192, lastline=197, commentstyle=\color{mygreen}, basicstyle=\footnotesize]{R_code_exam.R}
+    \lstinputlisting[language=R, firstline=199, lastline=204, commentstyle=\color{mygreen}, basicstyle=\footnotesize]{R_code_exam.R}
     \begin{figure}
         \centering
         \includegraphics[width=0.9\linewidth]{focal_nir.jpeg}
@@ -231,7 +232,7 @@ la deviazione standard sulla banda del NIR.
 \end{frame}
 
 \begin{frame}{Calcolo della correlazione: la funzione \texttt{pairs()} }
-    \lstinputlisting[language=R, firstline=217, lastline=218, commentstyle=\color{mygreen}, basicstyle=\footnotesize]{R_code_exam.R}
+    \lstinputlisting[language=R, firstline=225, lastline=226, commentstyle=\color{mygreen}, basicstyle=\footnotesize]{R_code_exam.R}
     \begin{figure}
         \centering
         \includegraphics[width=0.6\linewidth]{pairs_a17.jpeg}
@@ -240,7 +241,7 @@ la deviazione standard sulla banda del NIR.
 \end{frame}
 
 \begin{frame}{Analisi multivariata}
-    \lstinputlisting[language=R, firstline=232, lastline=241, commentstyle=\color{mygreen}, basicstyle=\footnotesize]{R_code_exam.R}
+    \lstinputlisting[language=R, firstline=240, lastline=249, commentstyle=\color{mygreen}, basicstyle=\footnotesize]{R_code_exam.R}
     \bigskip
     La PC1 è risultata, inoltre, pari a: 69.24446 per il 2019 e 64.48389 per il 2024.
     \end{frame}
@@ -305,4 +306,3 @@ Pietro Lacasella e Luigi Torreggiani - People, 2024
             \end{center}
         Il mio profilo GitHub: \url{https://github.com/silviagirlanda} \end{frame}
 \end{document}
-
