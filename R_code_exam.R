@@ -1,5 +1,6 @@
 #### FASE PRELIMINARE ####
-# Coordinate salvate dell'area d'indagine {"type":"Polygon","coordinates":[[[11.587418,46.262112],[11.587418,46.331832],[11.742943,46.331832],[11.742943,46.262112],[11.587418,46.262112]]]}
+# Coordinate salvate dell'area d'indagine 
+# {"type":"Polygon","coordinates":[[[11.587418,46.262112],[11.587418,46.331832],[11.742943,46.331832],[11.742943,46.262112],[11.587418,46.262112]]]}
 
 # Installo i pacchetti necessari dal CRAN con la funzione install.packages(), il pacchetto va inserito tra virgolette:
 # install.packages("terra")
