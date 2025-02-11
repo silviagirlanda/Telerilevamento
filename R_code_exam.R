@@ -20,9 +20,11 @@ library(ggplot2) # Per la creazione dei grafici
 library(patchwork) # Per la visualizzazione di più grafici assieme
 
 
-# Imposto la cartella di lavoro, dove sono state posizionate le immagini relative alla zona di Predazzo e vicina alla Foresta di Paneveggio (avendo cura di sostiuire i backslash con gli slash): da questa work directory, R prenderà i dati utilizzati durante quest'analisi.
-# Il seguente codice ha l'obiettivo di evidenziare i cambiamenti nei termini di copertura forestale a seguito della tempesta Vaia del 2018 e della conseguente diffusione epidemica del bostrico (Ips typographus),
-# mettendo a confronto l'estate del 2017 (pre Vaia), l'estate del 2019 (post Vaia) e l'estate del 2024. L'area analizzata ricopre circa 93 km2.
+# Imposto la cartella di lavoro, dove sono state posizionate le immagini relative alla zona di Predazzo e vicina alla Foresta di Paneveggio 
+# (avendo cura di sostiuire i backslash con gli slash): da questa work directory, R prenderà i dati utilizzati durante quest'analisi.
+# Il seguente codice ha l'obiettivo di evidenziare i cambiamenti nei termini di copertura forestale a seguito della tempesta Vaia del 2018 
+# e della conseguente diffusione epidemica del bostrico (Ips typographus), mettendo a confronto l'estate del 2017 (pre Vaia), l'estate del 2019 (post Vaia)
+# e l'estate del 2024. L'area analizzata ricopre circa 93 km2.
 setwd("C:/Telerilevamento") #posizionata vicino alla sorgente del computer per facilitare i percorsi
 
 # Le immagini sono state catturate da Sentil-2 e scaricate liberamente da Copernicus Browser, sottoforma di file TIFF-16bit, selezionando le bande del:
@@ -51,22 +53,25 @@ a24_2 <- rast("24_2.tiff") #blue
 a24_8 <- rast("24_8.tiff") #nir
 a24 <- c(a24_4, a24_3, a24_2, a24_8)
 
-#Creo un multiframe per visualizzare insieme le immagini in true color grazie alla funzione par(), creando una griglia di 1 riga e 3 colonne e aggiungendo i titoli:
+# Creo un multiframe per visualizzare insieme le immagini in true color grazie alla funzione par(), 
+# creando una griglia di 1 riga e 3 colonne e aggiungendo i titoli:
 
 par(mfrow=c(1,3))
 im.plotRGB(a17, 1,2,3,title="2017")
 im.plotRGB(a19, 1,2,3,title="2019")
 im.plotRGB(a24, 1,2,3,title="2024")
 
-#Sostitusico il filtro rosso con la componente infrarossa per evidenziare il verde, ossia la copertura forestale: tutto quello che riflette infrarosso diventerà rosso
+# Sostitusico il filtro rosso con la componente infrarossa per evidenziare il verde, ossia la copertura forestale: 
+# tutto quello che riflette infrarosso diventerà rosso
 
 par(mfrow=c(1,3))
 im.plotRGB(a17, 4,3,2,title="2017 (nir)")
 im.plotRGB(a19, 4,3,2,title="2019 (nir)")
 im.plotRGB(a24, 4,3,2,title="2024 (nir)")
-##############QUI SI METTONO IN ORDINE COSì PERCHè SI FA COSì E BOONE?
 
-#Faccio  la differenza tra il nir del 2017 e quello del 2024 per vedere la differenza in termini di salute della vegetazione dopo la tempesta Vaia e la maggior diffusione del bostrico:
+
+# Faccio  la differenza tra il nir del 2017 e quello del 2024 per vedere la differenza in termini di salute della vegetazione 
+# dopo la tempesta Vaia e la maggior diffusione del bostrico:
 difnir <- a17 [[4]] - a24[[4]] 
 # Lo plotto: 
 cdiff <- colorRampPalette(c("red","white","darkslategray")) (100) #colore rosso evidenzia dove la componente boschiva è cambiata
@@ -146,7 +151,7 @@ prop_24 = f_24 / tot_24 #proporzione
 perc_24 = prop_24 * 100 #percentuali 
 ## classe 1 = 7.5%  classe 2 = 70.6% classe 3 = 21.9%
 
-#Creo un DATASET con le percentuali ottenute, al fine di confrontare come variano le frequenze nel corso del tempo:
+# Creo un DATASET con le percentuali ottenute, al fine di confrontare come variano le frequenze nel corso del tempo:
 anno <- c("2017","2019","2024")
 bosco <- c(76.1,75.3,70.6)
 no_bosco <- c(14.9,18.4,21.9)
@@ -170,8 +175,8 @@ p1 + p2 # uniamo assieme i grafici grazie alla funzione patchwork per vedere il 
 #Chiudo il device precedente:
 dev.off()
 
-# MISURA della VARIABILITA': calcolo della deviazione standard sulla banda del nir
-clsd<- colorRampPalette(c("yellow","darkslategray")) (100)
+# MISURA della VARIABILITA' (1): calcolo della deviazione standard sulla banda del nir
+# Assegno all'oggetto vir, la palette "viridis", comprendente colori adatti per le persone che soffrono di deuteroanomalie.
 vir <- colorRampPalette(viridis(7))(100)
 
 #------------2017
@@ -180,7 +185,7 @@ plot(nir)
 #Useremo la nuova funzione "focal" che permette di estarre valori focali, ossia statistiche, in un gruppo di valori: qui la dev standard.
 focal(nir, matrix (1/9, 3, 3), fun=sd)
 # nir è l'immagine usata
-# matrix: è una matrice ossia il secondo argomento della funzione focal(). 1/9 perchè useremo un unico pixel su 9, la matrice è di 3 x 3 pixel. È l'unità di misura. 
+# matrix: è una matrice ossia il secondo argomento della funzione focal(). 1/9 perchè useremo un unico pixel su 9, la matrice è di 3 x 3 pixel.
 # numero di pixel per colonna e per riga;
 # funzione usata è "standard deviation" N.B. non nominare con sd perchè corrisponde al nome della funzione
 
@@ -212,21 +217,22 @@ plot(sd2024,col=vir)
 
 # Calcolo la CORRELAZIONE che vi è tra le bande grazie alla funzione "pairs":
 # Tra le bande blu, verde e rosso c'è un'alta correlazione (0.97/0.98 in un range che va da -1 (correlazione negativa) a 1(correlazione positiva))
-# Le immagini in diagonale e in verde mostrano le correlazioni tra le bande. Rosso, Verde e Blu sono correlate tra loro, il NIR ha una correlazione minore con le altre bande, un po'maggiore con il verde.
-#Creo uno stacksent al fine di unire le varie immagini delle singole bande, creando così un'immagine multispettrale (è lo stesso che ho fatto all'inizio):
+# Le immagini in diagonale e in verde mostrano le correlazioni tra le bande. Rosso, Verde e Blu sono correlate tra loro;
+# il NIR ha una correlazione minore con le altre bande, un po'maggiore con il verde.
+# Creo uno stacksent al fine di unire le varie immagini delle singole bande, creando così un'immagine multispettrale (è lo stesso che ho fatto all'inizio):
 stack17 <- c(a17[[1]], a17[[2]], a17[[3]],a17[[4]]) 
 pairs(stack17) 
 
-#Facciamo la stessa cosa per il 2019: 0.95/0.97 tra le bande blu, verde e rosso; nir correllazione più bassa, un po'maggiore con il verde.
+# Facciamo la stessa cosa per il 2019: 0.95/0.97 tra le bande blu, verde e rosso; nir correllazione più bassa, un po'maggiore con il verde.
 stack19<-c(a19[[1]],a19[[2]],a19[[3]],a19[[4]])
 pairs(stack19)
 
-#E per il 2024: 0.94/0.97 tra le bande blu, verde e rosso; nir correllazione più bassa, un po'maggiore con il verde.
+# E per il 2024: 0.94/0.97 tra le bande blu, verde e rosso; nir correllazione più bassa, un po'maggiore con il verde.
 stack24<-c(a24[[1]],a24[[2]],a24[[3]],a24[[4]])
 pairs(stack24)
 
 ###ANALISI MULTIVARIATA
-#
+# Grazie all'analisi multivariata riesco a individuare la componente pricnipale (PC1) che descrive al meglio la variabilità dei miei dati.
 
 #2017
 pca2017 <- im.pca(a17)
@@ -264,7 +270,7 @@ tot <-sum(6783.2525, 3171.9157, 355.7192, 208.4101)
 208.4101 * 100/tot
 # 1.981217 = PC4
 
-
+# MISURA della VARIABILITA' (2): calcolo della deviazione standard sulla PC1
 #Uso la tecnica della moving window sulla PC1 essendo la più rappresentativa, al posto di calcolarla su una banda a nostra scelta.
 
 #2017
