@@ -190,7 +190,7 @@ plot(sd2017,col=vir)
 
 #-----------2019
 nir2 <- a19[[4]]
-plot(nir)
+plot(nir2)
 focal(nir2, matrix (1/9, 3, 3), fun=sd)
 #Rinominiamo l'oggetto:
 sd2019 <- focal(nir2, matrix (1/9, 3, 3), fun=sd)
