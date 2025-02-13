@@ -16,7 +16,7 @@
 # Richiamo i pacchetti necessari, senza la necessità di usare le virgolette in quanto già presenti in R:
 library(terra) # Per la funzione rast() e per focal()
 library(imageRy) # Per im.plotRGB() e im.classify()
-library(viridis) # Per utilizzare colorRampPalette adatte a chi soffre di deuteranomalia (daltonismo)
+library(viridis) # Per utilizzare colorRampPalette adatte a chi soffre di daltonismo
 library(ggplot2) # Per la creazione dei grafici
 library(patchwork) # Per la visualizzazione di più grafici assieme
 
